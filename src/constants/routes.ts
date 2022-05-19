@@ -1,5 +1,6 @@
 
 // Main Switch Navigation Routes
+export const WELCOME_SCREEN = "WELCOME_SCREEN";
 export const LOGIN_SCREEN = "LOGIN_SCREEN";
 export const SIGNUP_SCREEN = "SIGNUP_SCREEN";
 

@@ -8,7 +8,8 @@ export const MARGIN_HORIZONTAL = 30;
 export const BORDER_RADIUS = 6;
 export const BORDER_WIDTH = 2;
 
-export const COLOR_PRIMARY = 'rgb(97, 46, 255)';
+export const COLOR_PRIMARY = '#6C5ECF';
+export const COLOR_SECONDARY = '#F76F6F';
 export const COLOR_ACCENT = 'rgb(239, 235, 255)';
 
 export const COLOR_BACKGROUND = 'rgb(255, 255, 255)';
