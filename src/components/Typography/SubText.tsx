@@ -16,7 +16,8 @@ export default function SubText({ children, style }: SubTextProps) {
 const styles = StyleSheet.create({
     info: {
         color: StyleConstants.COLOR_TEXT_LIGHT,
-        fontSize: 13,
-        lineHeight: 18,
+        fontSize: 14,
+        lineHeight: 20,
+        fontFamily: 'Sofia-Pro-Regular',
     },
 })

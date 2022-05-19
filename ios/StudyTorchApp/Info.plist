@@ -69,6 +69,14 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>Sofia-Pro-Black.ttf</string>
+		<string>Sofia-Pro-Bold.ttf</string>
+		<string>Sofia-Pro-ExtraLight.ttf</string>
+		<string>Sofia-Pro-Light.ttf</string>
+		<string>Sofia-Pro-Medium.ttf</string>
+		<string>Sofia-Pro-Regular.ttf</string>
+		<string>Sofia-Pro-Semi-Bold.ttf</string>
+		<string>Sofia-Pro-UltraLight.ttf</string>
 	</array>
 </dict>
 </plist>

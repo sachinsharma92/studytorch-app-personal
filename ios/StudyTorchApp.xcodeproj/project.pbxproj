@@ -30,6 +30,14 @@
 		E25A28EF1D904E23B901F347 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F68534E851F64B36999A82A5 /* Octicons.ttf */; };
 		62427CD04E174E088FB40757 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9F00726957E4BF7AE645C52 /* SimpleLineIcons.ttf */; };
 		5982019C8667461CBA0BF74D /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F2BE9316E2C147C3B9417FA8 /* Zocial.ttf */; };
+		E2222B396A59488986CEB8BF /* Sofia-Pro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65CED7DEEF124F6081C86C20 /* Sofia-Pro-Black.ttf */; };
+		645BBB3BB20746C5948F3594 /* Sofia-Pro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4BB17E1460F04191A79FDE3D /* Sofia-Pro-Bold.ttf */; };
+		FF7E733C41244CD4A86F9A7C /* Sofia-Pro-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51BE046A21EB40F3AB051770 /* Sofia-Pro-ExtraLight.ttf */; };
+		8807C58A08844491955AEC0A /* Sofia-Pro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E0518B24EA141FCAE822FE8 /* Sofia-Pro-Light.ttf */; };
+		97D37E0069DA41D8B990936F /* Sofia-Pro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EEEBA783DD945D9B3E640D6 /* Sofia-Pro-Medium.ttf */; };
+		B808FE116D98407199ACCACA /* Sofia-Pro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5E7CD9307B646A6BB398F8C /* Sofia-Pro-Regular.ttf */; };
+		3C53B922255649F4B8D71CEF /* Sofia-Pro-Semi-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14697EF6F0D94BB7B75FEB5C /* Sofia-Pro-Semi-Bold.ttf */; };
+		BE88F6344CA7469E925F1571 /* Sofia-Pro-UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E65C60541E624075B9192CDF /* Sofia-Pro-UltraLight.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +84,14 @@
 		F68534E851F64B36999A82A5 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		D9F00726957E4BF7AE645C52 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		F2BE9316E2C147C3B9417FA8 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		65CED7DEEF124F6081C86C20 /* Sofia-Pro-Black.ttf */ = {isa = PBXFileReference; name = "Sofia-Pro-Black.ttf"; path = "../src/assets/fonts/Sofia-Pro-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4BB17E1460F04191A79FDE3D /* Sofia-Pro-Bold.ttf */ = {isa = PBXFileReference; name = "Sofia-Pro-Bold.ttf"; path = "../src/assets/fonts/Sofia-Pro-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		51BE046A21EB40F3AB051770 /* Sofia-Pro-ExtraLight.ttf */ = {isa = PBXFileReference; name = "Sofia-Pro-ExtraLight.ttf"; path = "../src/assets/fonts/Sofia-Pro-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1E0518B24EA141FCAE822FE8 /* Sofia-Pro-Light.ttf */ = {isa = PBXFileReference; name = "Sofia-Pro-Light.ttf"; path = "../src/assets/fonts/Sofia-Pro-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2EEEBA783DD945D9B3E640D6 /* Sofia-Pro-Medium.ttf */ = {isa = PBXFileReference; name = "Sofia-Pro-Medium.ttf"; path = "../src/assets/fonts/Sofia-Pro-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D5E7CD9307B646A6BB398F8C /* Sofia-Pro-Regular.ttf */ = {isa = PBXFileReference; name = "Sofia-Pro-Regular.ttf"; path = "../src/assets/fonts/Sofia-Pro-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		14697EF6F0D94BB7B75FEB5C /* Sofia-Pro-Semi-Bold.ttf */ = {isa = PBXFileReference; name = "Sofia-Pro-Semi-Bold.ttf"; path = "../src/assets/fonts/Sofia-Pro-Semi-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E65C60541E624075B9192CDF /* Sofia-Pro-UltraLight.ttf */ = {isa = PBXFileReference; name = "Sofia-Pro-UltraLight.ttf"; path = "../src/assets/fonts/Sofia-Pro-UltraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +216,14 @@
 				F68534E851F64B36999A82A5 /* Octicons.ttf */,
 				D9F00726957E4BF7AE645C52 /* SimpleLineIcons.ttf */,
 				F2BE9316E2C147C3B9417FA8 /* Zocial.ttf */,
+				65CED7DEEF124F6081C86C20 /* Sofia-Pro-Black.ttf */,
+				4BB17E1460F04191A79FDE3D /* Sofia-Pro-Bold.ttf */,
+				51BE046A21EB40F3AB051770 /* Sofia-Pro-ExtraLight.ttf */,
+				1E0518B24EA141FCAE822FE8 /* Sofia-Pro-Light.ttf */,
+				2EEEBA783DD945D9B3E640D6 /* Sofia-Pro-Medium.ttf */,
+				D5E7CD9307B646A6BB398F8C /* Sofia-Pro-Regular.ttf */,
+				14697EF6F0D94BB7B75FEB5C /* Sofia-Pro-Semi-Bold.ttf */,
+				E65C60541E624075B9192CDF /* Sofia-Pro-UltraLight.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -317,6 +341,14 @@
 				E25A28EF1D904E23B901F347 /* Octicons.ttf in Resources */,
 				62427CD04E174E088FB40757 /* SimpleLineIcons.ttf in Resources */,
 				5982019C8667461CBA0BF74D /* Zocial.ttf in Resources */,
+				E2222B396A59488986CEB8BF /* Sofia-Pro-Black.ttf in Resources */,
+				645BBB3BB20746C5948F3594 /* Sofia-Pro-Bold.ttf in Resources */,
+				FF7E733C41244CD4A86F9A7C /* Sofia-Pro-ExtraLight.ttf in Resources */,
+				8807C58A08844491955AEC0A /* Sofia-Pro-Light.ttf in Resources */,
+				97D37E0069DA41D8B990936F /* Sofia-Pro-Medium.ttf in Resources */,
+				B808FE116D98407199ACCACA /* Sofia-Pro-Regular.ttf in Resources */,
+				3C53B922255649F4B8D71CEF /* Sofia-Pro-Semi-Bold.ttf in Resources */,
+				BE88F6344CA7469E925F1571 /* Sofia-Pro-UltraLight.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

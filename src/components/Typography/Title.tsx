@@ -18,7 +18,7 @@ export default function Title({ children, style, numberOfLines, level = 4, onPre
 
 const styles = StyleSheet.create({
     main: {
-        // fontFamily: 'Inter-Bold',
+        fontFamily: 'Sofia-Pro-Bold',
     },
     h1: {
         color: StyleConstants.COLOR_TEXT,

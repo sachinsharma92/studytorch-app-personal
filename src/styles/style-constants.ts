@@ -8,6 +8,13 @@ export const MARGIN_HORIZONTAL = 30;
 export const BORDER_RADIUS = 6;
 export const BORDER_WIDTH = 2;
 
+export const COLOR_GRAY_B0 = '#b0b0b0';
+export const COLOR_GRAY_F6 = "#f6f6f6";
+export const COLOR_GRAY_F9 = "#f9f9f9";
+export const COLOR_GRAY_LIGHT = "#eaeaeb";
+export const COLOR_GRAY_EA = "#eaeaea";
+export const COLOR_TEXT_LIGHT = 'rgba(0, 19, 37, 0.64)';
+
 export const COLOR_PRIMARY = '#6C5ECF';
 export const COLOR_SECONDARY = '#F76F6F';
 export const COLOR_ACCENT = 'rgb(239, 235, 255)';
@@ -15,7 +22,7 @@ export const COLOR_ACCENT = 'rgb(239, 235, 255)';
 export const COLOR_BACKGROUND = 'rgb(255, 255, 255)';
 export const COLOR_SURFACE = '#313035';
 
-export const COLOR_TEXT = 'rgb(41, 50, 89)';
+export const COLOR_TEXT = '#2E3142';
 export const COLOR_SUBTEXT = 'rgb(152, 155, 179)';
 export const COLOR_TEXT_DISABLED = '#9a999f';
 export const COLOR_TEXT_PLACEHOLDER = '#99989f';
