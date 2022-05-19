@@ -6,6 +6,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import LoginScreen from '../screens/login';
 import SignupScreen from '../screens/singup';
 import WelcomeScreen from '../screens/welcome';
+import ResetPasswordScreen from '../screens/resetPassword';
+import OnboardingScreen from '../screens/onboarding';
 
 const AuthStackNavigator = () => {
     const Stack = createStackNavigator();
@@ -16,6 +18,8 @@ const AuthStackNavigator = () => {
                 <Stack.Screen name={ROUTES.WELCOME_SCREEN} component={WelcomeScreen} />
                 <Stack.Screen name={ROUTES.SIGNUP_SCREEN} component={SignupScreen} />
                 <Stack.Screen name={ROUTES.LOGIN_SCREEN} component={LoginScreen} />
+                <Stack.Screen name={ROUTES.RESET_PASSWORD_SCREEN} component={ResetPasswordScreen} />
+                <Stack.Screen name={ROUTES.ONBOARDING_SCREEN} component={OnboardingScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );

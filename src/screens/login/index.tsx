@@ -19,7 +19,7 @@ interface LoginScreenProps {
 }
 
 
-export default function LoginScreen({navigation }: LoginScreenProps) {
+export default function LoginScreen({ navigation }: LoginScreenProps) {
   const dispatch = useDispatch();
 
   const onLogin = () => {
@@ -50,10 +50,10 @@ export default function LoginScreen({navigation }: LoginScreenProps) {
           />
 
           <View style={styles.forgot}>
-            <TouchableOpacity><SubText style={{ color: StyleConstants.COLOR_PRIMARY }}>Forgot Password?</SubText></TouchableOpacity>
+            <TouchableOpacity onPress={() => { navigation.navigate(ROUTES.RESET_PASSWORD_SCREEN) }}><SubText style={{ color: StyleConstants.COLOR_PRIMARY }}>Forgot Password?</SubText></TouchableOpacity>
           </View>
 
-          <ButtonPrimary buttonStyle={{ marginTop: 30 }} onPress={() => onLogin()} label="Login" />
+          <ButtonPrimary buttonStyle={{ marginTop: 30 }} onPress={() => { navigation.navigate(ROUTES.ONBOARDING_SCREEN) }} label="Login" />
 
           <View style={styles.registerNow}>
             <SubText style={{ textAlign: 'center', marginRight: 5 }}>Don’t have a Account?</SubText>

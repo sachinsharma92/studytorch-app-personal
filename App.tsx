@@ -22,6 +22,7 @@ const { store, persistor } = reduxStore;
 
 import { PersistGate } from 'redux-persist/integration/react';
 import MainSwitchNavigator from './src/navigators/MainSwitchNavigator';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 
 const theme = {
@@ -47,13 +48,15 @@ const theme = {
 const App = () => {
 
   return (
-    <StoreProvider store={store}>
-      <PersistGate persistor={persistor}>
-        <PaperProvider theme={theme}>
-          <MainSwitchNavigator />
-        </PaperProvider>
-      </PersistGate>
-    </StoreProvider>
+    <SafeAreaProvider>
+      <StoreProvider store={store}>
+        <PersistGate persistor={persistor}>
+          <PaperProvider theme={theme}>
+            <MainSwitchNavigator />
+          </PaperProvider>
+        </PersistGate>
+      </StoreProvider>
+    </SafeAreaProvider>
   );
 };
 
