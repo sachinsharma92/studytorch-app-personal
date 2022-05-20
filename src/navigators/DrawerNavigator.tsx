@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../redux/actions/userActions';
 import InputPrimary from '../common/inputPrimary';
 import PlannerScreen from '../screens/planner';
+import GroupsScreen from '../screens/groups';
 
 const Drawer = createDrawerNavigator();
 
@@ -45,7 +46,8 @@ export default function DrawerNavigator(props: any) {
                     uri: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
                   }}
                 />
-              </TouchableOpacity></View>,
+              </TouchableOpacity>
+            </View>,
           }}
           drawerContent={props => <StudyTorchDrawer {...props} />}
         >
@@ -70,7 +72,7 @@ export default function DrawerNavigator(props: any) {
             component={SharedWithMeScreen}
             options={{
               drawerLabel: ({ }) => <Title style={styles.drawerLabelStyle}>Shared With Me</Title>,
-              drawerIcon: ({ }) => <Icon name="account-group-outline" size={25} color={StyleConstants.COLOR_TEXT_LIGHT} />,
+              drawerIcon: ({ }) => <Icon name="account-multiple-outline" size={25} color={StyleConstants.COLOR_TEXT_LIGHT} />,
             }}
           />
 
@@ -80,6 +82,15 @@ export default function DrawerNavigator(props: any) {
             options={{
               drawerLabel: ({ }) => <Title style={styles.drawerLabelStyle}>Planner</Title>,
               drawerIcon: ({ }) => <Icon name="calendar-month-outline" size={25} color={StyleConstants.COLOR_TEXT_LIGHT} />,
+            }}
+          />
+
+          <Drawer.Screen
+            name="Groups"
+            component={GroupsScreen}
+            options={{
+              drawerLabel: ({ }) => <Title style={styles.drawerLabelStyle}>Groups</Title>,
+              drawerIcon: ({ }) => <Icon name="account-group-outline" size={25} color={StyleConstants.COLOR_TEXT_LIGHT} />,
             }}
           />
         </Drawer.Navigator>

@@ -3,38 +3,44 @@ import { StyleSheet, ScrollView, View, TouchableOpacity } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import BottomModal from '../../common/bottomModal'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import CallectionCard from '../../components/collections/callectionCard'
 import Title from '../../components/Typography/Title'
 import { StyleConstants } from '../../styles/style-constants';
+import GroupsCard from '../../components/groups/groupsCard';
 
 
 const infoCardList = [
 	{
-		title: 'Maths',
-		subtext: '20 Notes, 2 quizes'
+		title: 'Group Name',
+		subtext: 'Created by Mudita . 7 members',
+		cardColor: '#FFEDE2'
 	},
 	{
-		title: 'Maths',
-		subtext: '20 Notes, 2 quizes'
+		title: 'Group Name',
+		subtext: 'Created by Mudita . 7 members',
+		cardColor: '#E3F7FF'
 	},
 	{
-		title: 'Maths',
-		subtext: '20 Notes, 2 quizes'
+		title: 'Group Name',
+		subtext: 'Created by Mudita . 7 members',
+		cardColor: '#FEE3E1'
 	},
 	{
-		title: 'Maths',
-		subtext: '20 Notes, 2 quizes'
+		title: 'Group Name',
+		subtext: 'Created by Mudita . 7 members',
+		cardColor: '#FFEDE2'
 	},
 	{
-		title: 'Maths',
-		subtext: '20 Notes, 2 quizes'
+		title: 'Group Name',
+		subtext: 'Created by Mudita . 7 members',
+		cardColor: '#FEE3E1'
 	},
 	{
-		title: 'Maths',
-		subtext: '20 Notes, 2 quizes'
+		title: 'Group Name',
+		subtext: 'Created by Mudita . 7 members',
+		cardColor: '#E3F7FF'
 	},
 ]
-export default function CollectionsScreen() {
+export default function GroupsScreen() {
 	const [isModalVisible, setModalVisible] = useState(false);
 	const toggleModal = () => {
 		setModalVisible(!isModalVisible);
@@ -44,10 +50,15 @@ export default function CollectionsScreen() {
 		<SafeAreaView style={{ flex: 1 }}>
 			<ScrollView>
 				<View style={styles.container}>
-					<Title style={styles.title1}>My Collections</Title>
+					<Title style={styles.title1}>Groups</Title>
 					<View style={styles.cardSection}>
 						{infoCardList.map((item) => (
-							<CallectionCard title={item.title} subText={item.subtext} dotHandler={toggleModal} />
+							<GroupsCard 
+							title={item.title} 
+							subText={item.subtext} 
+							dotHandler={toggleModal} 
+							bgStyle={item.cardColor}
+							/>
 						))}
 					</View>
 				</View>

@@ -12,7 +12,7 @@ interface BottomModalProps {
 export default function BottomModal({ children, isVisible, onBackdropPress }: BottomModalProps) {
   return (
     <Modal isVisible={isVisible} style={{margin: 0, justifyContent:'flex-end'}} onBackdropPress={onBackdropPress}>
-      <View style={{ backgroundColor:'white', minHeight: 250, borderTopLeftRadius: 10, borderTopRightRadius: 10, padding: 20 }}>
+      <View style={{ backgroundColor:'white', minHeight: 150, borderTopLeftRadius: 10, borderTopRightRadius: 10, padding: 20 }}>
         {children}
       </View>
     </Modal>
