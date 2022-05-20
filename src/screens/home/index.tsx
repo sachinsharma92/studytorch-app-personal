@@ -51,8 +51,15 @@ export default function HomeScreen() {
 						<PiechartView />
 					</View>
 
+					<View style={[styles.barChart, {marginBottom: 30}]}>
+						<Title style={styles.title2}>Study Pattern</Title>
+						<SubText>01 - 21 March, 2021</SubText>
+						<BarchartView />
+					</View>
+
 					<View style={styles.barChart}>
-						<Title style={styles.title1}>Study Pattern</Title>
+						<Title style={styles.title2}>Quiz Score Analysis</Title>
+						<SubText>01 - 21 March, 2021</SubText>
 						<BarchartView />
 					</View>
 				</View>
@@ -66,8 +73,15 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		marginBottom: 20
 	},
+	title2: {
+		fontSize: 20,
+		marginBottom: 5
+	},
 	container: {
-		paddingHorizontal: 20, paddingTop: 40, backgroundColor: 'white', flex: 1,
+		paddingHorizontal: 20, 
+		backgroundColor: 'white', 
+		flex: 1, 
+		paddingBottom: 100
 	},
 	cardSection: {
 		flexDirection: 'row',
