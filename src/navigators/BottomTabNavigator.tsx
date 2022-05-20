@@ -27,7 +27,12 @@ export default function BottomTabNavigator() {
     return (
         <View style={{ flex: 1 }}>
             <NavigationContainer >
-                <Tab.Navigator tabBar={(props: BottomTabBarProps) => <TabBar {...props} />}>
+                <Tab.Navigator
+                    tabBar={(props: BottomTabBarProps) => <TabBar {...props} />}
+                    screenOptions={{
+                        headerShown: false,
+                    }}
+                >
                     <Tab.Screen
                         name={ROUTES.HOME_STACK_NAVIGATOR}
                         component={HomeScreenStackNavigator}
