@@ -16,11 +16,11 @@ import { StyleConstants } from "../styles/style-constants";
 interface InputPrimaryProps {
   onPress?: () => void;
   label?: string;
-  inputStyle?: StyleProp<ViewStyle>
   placeholder?: string,
   keyboardType?: any,
   style?: StyleProp<ViewStyle>,
-  infoText?: any
+  infoText?: any,
+  inputStyle?: StyleProp<ViewStyle>
 }
 
 export default function InputPrimary({
@@ -39,7 +39,7 @@ export default function InputPrimary({
         style={[styles.input, inputStyle]}
         keyboardType={keyboardType}
         maxLength={10}
-        autoFocus={true}
+        autoFocus={false}
         placeholder={placeholder}
       />
        {infoText && <SubText style={styles.infoText}>{infoText}</SubText>}
@@ -49,7 +49,7 @@ export default function InputPrimary({
 
 const styles = StyleSheet.create({
   input: {
-    minHeight: 50,
+    height: 50,
     borderWidth: 1,
     borderColor: StyleConstants.COLOR_GRAY_EA,
     padding: 10,

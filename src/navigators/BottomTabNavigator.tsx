@@ -9,6 +9,8 @@ import HomeScreenStackNavigator from './HomeScreenStackNavigator';
 import { ROUTES } from '../constants/routes';
 import { TabBar } from './bottomAnimation/TabBar';
 import { DrawerActions } from '@react-navigation/native';
+import CollectionsScreen from '../screens/collections';
+import SharedWithMeScreen from '../screens/sharedWithMe';
 
 
 const Tab = createBottomTabNavigator();
@@ -35,15 +37,34 @@ export default function BottomTabNavigator() {
 					name={ROUTES.HOME_STACK_NAVIGATOR}
 					component={HomeScreenStackNavigator}
 					options={{
-						tabBarLabel: "Home",
+						tabBarLabel: "Dashboard",
 						tabBarIcon: getIcon('home')
 					}}
 				/>
-				<Tab.Screen name={ROUTES.PROFILE_SCREEN} component={ProfileScreen}
+				<Tab.Screen
+					name={ROUTES.COLLECTIONS_SCREEN}
+					component={CollectionsScreen}
 					options={{
-						tabBarIcon: getIcon('account'),
+						tabBarLabel: "Collections",
+						tabBarIcon: getIcon('folder-table-outline'),
 					}}
 				/>
+				<Tab.Screen
+					name={ROUTES.SHARED_WITH_ME_SCREEN}
+					component={SharedWithMeScreen}
+					options={{
+						tabBarLabel: "Shared",
+						tabBarIcon: getIcon('account-group-outline'),
+					}}
+				/>
+					<Tab.Screen
+						name={ROUTES.PROFILE_SCREEN}
+						component={ProfileScreen}
+						options={{
+							tabBarLabel: "Profile",
+							tabBarIcon: getIcon('account'),
+						}}
+					/>
 			</Tab.Navigator>
 			{useSafeAreaFrame().bottom > 0 && (
 				<View

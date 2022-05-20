@@ -1,12 +1,18 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { StyleConstants } from '../styles/style-constants';
-import { NavigationContainer } from '@react-navigation/native';
-import HomeScreen from '../screens/home';
+import { DrawerActions, NavigationContainer } from '@react-navigation/native';
 import BottomTabNavigator from './BottomTabNavigator';
+import CollectionsScreen from '../screens/collections';
+import SharedWithMeScreen from '../screens/sharedWithMe';
+import LogoPrimary from "../common/logoPrimary"
+import Title from '../components/Typography/Title';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../redux/actions/userActions';
+import InputPrimary from '../common/inputPrimary';
 
-// const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
 export default function DrawerNavigator(props: any) {
@@ -25,37 +31,103 @@ export default function DrawerNavigator(props: any) {
             drawerActiveTintColor: 'white',
             drawerInactiveTintColor: 'white',
             unmountOnBlur: true,
+            headerTitle: () => (
+              <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 10 }}>
+                <InputPrimary style={styles.searchInput} placeholder="Search WorkSpace" inputStyle={styles.inputCustom} />
+              </View>
+            ),
+            headerRight: ({ }) => <View>
+              <TouchableOpacity>
+                <Image
+                  style={styles.tinyLogo}
+                  source={{
+                    uri: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+                  }}
+                />
+              </TouchableOpacity></View>,
           }}
+          drawerContent={props => <StudyTorchDrawer {...props} />}
         >
-          <Drawer.Screen name="Home" component={BottomTabNavigator} />
-          {/* <Drawer.Screen name="Notifications" component={NotificationsScreen} /> */}
+          <Drawer.Screen
+            name="Dashboard"
+            component={BottomTabNavigator}
+            options={{
+              drawerLabel: ({ }) => <Title style={styles.drawerLabelStyle}>Dashboard</Title>,
+              drawerIcon: ({ }) => <Icon name="home-outline" size={25} color={StyleConstants.COLOR_TEXT_LIGHT} />,
+            }}
+          />
+          <Drawer.Screen
+            name="Collections"
+            component={CollectionsScreen}
+            options={{
+              drawerLabel: ({ }) => <Title style={styles.drawerLabelStyle}>Collections</Title>,
+              drawerIcon: ({ }) => <Icon name="folder-table-outline" size={25} color={StyleConstants.COLOR_TEXT_LIGHT} />,
+            }}
+          />
+          <Drawer.Screen
+            name="Shared With Me"
+            component={SharedWithMeScreen}
+            options={{
+              drawerLabel: ({ }) => <Title style={styles.drawerLabelStyle}>Shared With Me</Title>,
+              drawerIcon: ({ }) => <Icon name="account-group-outline" size={25} color={StyleConstants.COLOR_TEXT_LIGHT} />,
+            }}
+          />
         </Drawer.Navigator>
       </NavigationContainer>
     </>
   );
 }
 
+const StudyTorchDrawer = (props: any) => {
+  const dispatch = useDispatch();
+  return (
+    <View style={{ flex: 1, backgroundColor: 'white' }}>
+      <View style={{ paddingHorizontal: 20 }}>
+        <LogoPrimary dark />
+      </View>
+      <DrawerContentScrollView
+        style={styles.container}
+        contentContainerStyle={styles.content} {...props}>
+        <DrawerItemList {...props} />
+        {/* <DrawerItem label="Logout" onPress={() => dispatch(logout())} /> */}
+      </DrawerContentScrollView>
+
+      <TouchableOpacity
+        onPress={() => {
+          dispatch(logout())
+        }}
+        style={styles.navLink}>
+        <Icon name="logout-variant" size={20} color={StyleConstants.COLOR_TEXT_LIGHT} />
+        <Title style={styles.textLogout}>Logout</Title>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
   container: {
     paddingTop: 15,
-    flex: 1,
     paddingHorizontal: 10,
   },
   content: {
     justifyContent: 'space-between',
-    flexGrow: 2,
   },
   logo: {
     marginHorizontal: 10,
   },
   navLink: {
-    backgroundColor: StyleConstants.COLOR_SECONDARY,
-    borderRadius: StyleConstants.BORDER_RADIUS,
-    marginBottom: 15,
+    backgroundColor: StyleConstants.COLOR_GRAY_EA,
     height: 65,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     paddingHorizontal: 10,
+  },
+  textLogout: {
+    fontSize: 14,
+    color: StyleConstants.COLOR_TEXT_LIGHT,
+    marginLeft: 10,
+    textTransform: 'uppercase'
   },
   version: {
     fontSize: 16,
@@ -92,7 +164,7 @@ const styles = StyleSheet.create({
     color: StyleConstants.COLOR_PRIMARY
   },
   drawerItemStyle: {
-    marginBottom: 10,
+    marginBottom: 0,
   },
   drawerIcon: {
     width: 25,
@@ -101,6 +173,8 @@ const styles = StyleSheet.create({
   drawerLabelStyle: {
     fontSize: 14,
     color: StyleConstants.COLOR_TEXT,
+    fontFamily: 'Sofia-Pro-Regular',
+    left: -20
   },
   drawerStyle: {
     width: '70%',
@@ -110,67 +184,19 @@ const styles = StyleSheet.create({
     elevation: 0,
     shadowOpacity: 0,
   },
-  closeButton: {
-    backgroundColor: 'rgba(256,256,256,0.5)',
+  tinyLogo: {
+    width: 30,
+    height: 30,
     borderRadius: 50,
-    marginBottom: 15,
-    borderWidth: 1,
-    borderColor: StyleConstants.COLOR_BORDER,
-    width: 40,
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginRight: 15
   },
-  closeButtonSection: {
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end',
-    height: 40,
-    right: 20,
-    zIndex: 2,
-    marginTop: 40
+  searchInput: {
+    width: '100%',
+    marginLeft: 0,
   },
-  numberAlertStyle: {
-    width: 17,
-    height: 17,
-    borderRadius: 50,
-    fontSize: 10,
-    right: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'red',
-    position: 'absolute',
-  },
-  borderBottom: {
-    borderBottomWidth: 1,
-    borderBottomColor: '#eaeaeb',
-    backgroundColor: StyleConstants.COLOR_GRAY_F6,
-  },
-  menuText: {
-    fontSize: 26,
-    marginBottom: 20,
-    color: StyleConstants.COLOR_TEXT
-  },
-  versionText: {
-    fontSize: 14,
-    marginTop: 6,
-    color: StyleConstants.COLOR_TEXT
-  },
-  profileIcon: {
-    backgroundColor: 'white',
-    width: 35,
+  inputCustom: {
     height: 35,
     borderRadius: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 20,
-    borderWidth: 1,
-    borderColor: StyleConstants.COLOR_BORDER
-  },
-  backButtonStyle: {
-    marginTop: 0,
-    borderBottomWidth: 1,
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-    borderBottomColor: StyleConstants.COLOR_BORDER,
-  },
+    backgroundColor: '#fafafb'
+  }
 });

@@ -14,6 +14,9 @@ export const HOME_STACK_NAVIGATOR="HOME_STACK_NAVIGATOR";
 export const HOME_SCREEN="HOME_SCREEN";
 export const PROFILE_SCREEN = "PROFILE_SCREEN";
 
+export const COLLECTIONS_SCREEN = "COLLECTIONS_SCREEN";
+export const SHARED_WITH_ME_SCREEN = "SHARED_WITH_ME_SCREEN";
+
 
 
 export * as ROUTES from './routes';
