@@ -7,12 +7,12 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FolderIcon from "../../../assets/images/folders/folder1.svg"
 
 interface CallectionCardProps {
-  imgUrl?: any,
+  dotHandler?: any,
   subText?: string,
   title?: string
 }
 
-export default function CallectionCard({ imgUrl, subText, title }: CallectionCardProps) {
+export default function CallectionCard({ dotHandler, subText, title }: CallectionCardProps) {
   return (
     <View style={styles.cardStyle}>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -22,7 +22,7 @@ export default function CallectionCard({ imgUrl, subText, title }: CallectionCar
           <SubText style={styles.subtext}>{subText}</SubText>
         </View>
       </View>
-      <TouchableOpacity style={styles.dotButton}><Icon name="dots-vertical" size={24} /></TouchableOpacity>
+      <TouchableOpacity onPress={dotHandler} style={styles.dotButton}><Icon name="dots-vertical" size={24} /></TouchableOpacity>
     </View>
   )
 }

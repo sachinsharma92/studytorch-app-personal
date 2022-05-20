@@ -1,11 +1,14 @@
-import React from 'react'
-import { StyleSheet, ScrollView, View } from 'react-native'
+import React, { useState } from 'react'
+import { StyleSheet, ScrollView, View, TouchableOpacity } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import BottomModal from '../../common/bottomModal'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CallectionCard from '../../components/collections/callectionCard'
 import BarchartView from '../../components/home/chart/barchartView'
 import PiechartView from '../../components/home/chart/piechartView'
 import SubText from '../../components/Typography/SubText'
 import Title from '../../components/Typography/Title'
+import { StyleConstants } from '../../styles/style-constants';
 
 
 const infoCardList = [
@@ -35,6 +38,11 @@ const infoCardList = [
 	},
 ]
 export default function CollectionsScreen() {
+	const [isModalVisible, setModalVisible] = useState(false);
+	const toggleModal = () => {
+		setModalVisible(!isModalVisible);
+	};
+
 	return (
 		<SafeAreaView style={{ flex: 1 }}>
 			<ScrollView>
@@ -42,10 +50,29 @@ export default function CollectionsScreen() {
 					<Title style={styles.title1}>My Collections</Title>
 					<View style={styles.cardSection}>
 						{infoCardList.map((item) => (
-							<CallectionCard title={item.title} subText={item.subtext} />
+							<CallectionCard title={item.title} subText={item.subtext} dotHandler={toggleModal} />
 						))}
 					</View>
 				</View>
+
+				<BottomModal isVisible={isModalVisible} onBackdropPress={toggleModal}>
+					<TouchableOpacity style={styles.button}>
+						<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="pencil" />
+						<Title style={styles.buttonTitle}>Rename</Title>
+					</TouchableOpacity>
+					<TouchableOpacity style={styles.button}>
+						<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="delete" />
+						<Title style={styles.buttonTitle}>Delete</Title>
+					</TouchableOpacity>
+					<TouchableOpacity style={styles.button}>
+						<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="information" />
+						<Title style={styles.buttonTitle}>Get Details</Title>
+					</TouchableOpacity>
+					<TouchableOpacity style={styles.button}>
+						<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="share-variant" />
+						<Title style={styles.buttonTitle}>Share</Title>
+					</TouchableOpacity>
+				</BottomModal>
 			</ScrollView>
 		</SafeAreaView>
 	)
@@ -71,10 +98,20 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		flexWrap: 'wrap'
 	},
-	pieCircleChart: {
-		marginVertical: 30
+	button: {
+		flexDirection: 'row',
+		paddingVertical: 15,
+		alignItems: 'center',
+		borderWidth: 1,
+		borderColor: StyleConstants.COLOR_GRAY_EA,
+		borderRadius: 10,
+		marginBottom: 10,
+		paddingHorizontal: 20,
+		// justifyContent:'center'
 	},
-	barChart: {
-
+	buttonTitle: {
+		marginLeft: 10,
+		fontSize: 16,
+		color: StyleConstants.COLOR_TEXT_LIGHT
 	}
 })
