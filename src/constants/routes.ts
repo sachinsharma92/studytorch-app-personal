@@ -17,6 +17,9 @@ export const PROFILE_SCREEN = "PROFILE_SCREEN";
 export const COLLECTIONS_SCREEN = "COLLECTIONS_SCREEN";
 export const SHARED_WITH_ME_SCREEN = "SHARED_WITH_ME_SCREEN";
 
+// Other Screens
+export const COLLECTION_DETAILS_SCREEN = "COLLECTION_DETAILS_SCREEN";
+
 
 
 export * as ROUTES from './routes';

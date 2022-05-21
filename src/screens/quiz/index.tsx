@@ -11,7 +11,6 @@ import CompletedQuizCard from '../../components/quiz/completedQuizCard';
 import DropdownPrimary from '../../common/dropdownPrimary';
 import SubText from '../../components/Typography/SubText';
 import { RadioButton } from 'react-native-paper';
-import QuizModal from '../../components/quiz/quizModal'
 
 
 const infoCardList = [1, 2, 3, 4,]

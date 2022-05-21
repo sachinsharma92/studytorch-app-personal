@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { StyleConstants } from '../../styles/style-constants'
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/actions/userActions';
 import ButtonPrimary from '../../common/buttonPrimary';
 import Title from '../../components/Typography/Title';
 import SubText from '../../components/Typography/SubText';
 import InputPrimary from '../../common/inputPrimary';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { ROUTES } from '../../constants/routes';
 
 // Svg Images Here
@@ -30,8 +28,6 @@ export default function ResetPasswordScreen({ navigation }: ResetPasswordProps) 
   const passwordReset = () => {
     setPasswordSent(!passwordSent)
   }
-
-
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>

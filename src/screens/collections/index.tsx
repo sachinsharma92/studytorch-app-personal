@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CallectionCard from '../../components/collections/callectionCard'
 import Title from '../../components/Typography/Title'
 import { StyleConstants } from '../../styles/style-constants';
+import { ROUTES } from '../../constants/routes';
 
 
 const infoCardList = [
@@ -47,7 +48,12 @@ export default function CollectionsScreen() {
 					<Title style={styles.title1}>My Collections</Title>
 					<View style={styles.cardSection}>
 						{infoCardList.map((item) => (
-							<CallectionCard title={item.title} subText={item.subtext} dotHandler={toggleModal} />
+							<CallectionCard
+								cardHandler={ROUTES.COLLECTION_DETAILS_SCREEN}
+								title={item.title}
+								subText={item.subtext}
+								dotHandler={toggleModal}
+							/>
 						))}
 					</View>
 				</View>

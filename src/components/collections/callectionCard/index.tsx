@@ -10,17 +10,20 @@ interface CallectionCardProps {
   dotHandler?: any,
   subText?: string,
   title?: string
+  cardHandler?: () => void;
 }
 
-export default function CallectionCard({ dotHandler, subText, title }: CallectionCardProps) {
+export default function CallectionCard({ dotHandler, subText, title, cardHandler }: CallectionCardProps) {
   return (
     <View style={styles.cardStyle}>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <FolderIcon />
-        <View style={{ backgroundColor: 'white', marginLeft: 20 }}>
-          <Title style={styles.title1}>{title}</Title>
-          <SubText style={styles.subtext}>{subText}</SubText>
-        </View>
+        <TouchableOpacity onPress={cardHandler} style={{flexDirection:'row', alignItems:'center'}}>
+          <FolderIcon />
+          <View style={{ backgroundColor: 'white', marginLeft: 20 }}>
+            <Title style={styles.title1}>{title}</Title>
+            <SubText style={styles.subtext}>{subText}</SubText>
+          </View>
+        </TouchableOpacity>
       </View>
       <TouchableOpacity onPress={dotHandler} style={styles.dotButton}><Icon name="dots-vertical" size={24} /></TouchableOpacity>
     </View>

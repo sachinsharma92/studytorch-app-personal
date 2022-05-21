@@ -20,7 +20,10 @@ interface InputPrimaryProps {
   keyboardType?: any,
   style?: StyleProp<ViewStyle>,
   infoText?: any,
-  inputStyle?: StyleProp<ViewStyle>
+  inputStyle?: StyleProp<ViewStyle>,
+  numberOfLines?: any
+  Props?: any,
+  multiline?: any
 }
 
 export default function InputPrimary({
@@ -30,8 +33,11 @@ export default function InputPrimary({
   inputStyle,
   placeholder,
   style,
-  infoText
-}: InputPrimaryProps) { 
+  infoText,
+  numberOfLines,
+  Props,
+  multiline
+}: InputPrimaryProps) {
   return (
     <View style={style}>
       {label && <Title style={styles.label}>{label}</Title>}
@@ -41,8 +47,11 @@ export default function InputPrimary({
         maxLength={10}
         autoFocus={false}
         placeholder={placeholder}
+        numberOfLines={numberOfLines}
+        multiline={multiline}
+        {...Props}
       />
-       {infoText && <SubText style={styles.infoText}>{infoText}</SubText>}
+      {infoText && <SubText style={styles.infoText}>{infoText}</SubText>}
     </View>
   );
 }

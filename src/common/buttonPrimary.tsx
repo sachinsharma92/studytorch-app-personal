@@ -40,7 +40,7 @@ export default function ButtonPrimary({
       {leftIcon && (
         <Icon
           name={leftIcon}
-          size={24}
+          size={20}
           color={leftIconColor}
           style={{marginRight: 10}}
         />

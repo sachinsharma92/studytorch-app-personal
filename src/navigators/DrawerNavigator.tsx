@@ -16,6 +16,7 @@ import PlannerScreen from '../screens/planner';
 import GroupsScreen from '../screens/groups';
 import ChecklistScreen from '../screens/checklist';
 import QuizScreen from '../screens/quiz';
+import CollectionDetailScreen from '../screens/collections/details';
 
 const Drawer = createDrawerNavigator();
 
@@ -110,6 +111,17 @@ export default function DrawerNavigator(props: any) {
             component={QuizScreen}
             options={{
               drawerLabel: ({ }) => <Title style={styles.drawerLabelStyle}>Quiz</Title>,
+              drawerIcon: ({ }) => <Icon name="help-circle-outline" size={25} color={StyleConstants.COLOR_TEXT_LIGHT} />,
+            }}
+          />
+
+
+          {/* Other Navigation  */}
+          <Drawer.Screen
+            name="Collection Detail"
+            component={CollectionDetailScreen}
+            options={{
+              drawerLabel: ({ }) => <Title style={styles.drawerLabelStyle}>Collection Detail</Title>,
               drawerIcon: ({ }) => <Icon name="help-circle-outline" size={25} color={StyleConstants.COLOR_TEXT_LIGHT} />,
             }}
           />

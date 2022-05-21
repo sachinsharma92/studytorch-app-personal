@@ -36,6 +36,7 @@ export default function QuizModal({ closeHandler, isVisible, onBackdropPress }: 
     <Modal isVisible={isVisible} style={{ margin: 10, justifyContent: 'center' }} onBackdropPress={onBackdropPress}>
       <View style={{ backgroundColor: 'white', minHeight: 150, borderRadius: 10, padding: 20 }}>
         <TouchableOpacity onPress={closeHandler} style={styles.closeButton}><Icon name="close" size={20}></Icon></TouchableOpacity>
+        
         <Title level={2}>Quiz Name</Title>
         <View style={{ marginTop: 10 }}>
           <View style={{ flexDirection: 'row' }}>
