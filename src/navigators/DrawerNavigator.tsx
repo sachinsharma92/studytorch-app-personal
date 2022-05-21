@@ -14,6 +14,8 @@ import { logout } from '../redux/actions/userActions';
 import InputPrimary from '../common/inputPrimary';
 import PlannerScreen from '../screens/planner';
 import GroupsScreen from '../screens/groups';
+import ChecklistScreen from '../screens/checklist';
+import QuizScreen from '../screens/quiz';
 
 const Drawer = createDrawerNavigator();
 
@@ -76,6 +78,15 @@ export default function DrawerNavigator(props: any) {
             }}
           />
 
+
+          <Drawer.Screen
+            name="Groups"
+            component={GroupsScreen}
+            options={{
+              drawerLabel: ({ }) => <Title style={styles.drawerLabelStyle}>Groups</Title>,
+              drawerIcon: ({ }) => <Icon name="account-group-outline" size={25} color={StyleConstants.COLOR_TEXT_LIGHT} />,
+            }}
+          />
           <Drawer.Screen
             name="Planner"
             component={PlannerScreen}
@@ -86,11 +97,20 @@ export default function DrawerNavigator(props: any) {
           />
 
           <Drawer.Screen
-            name="Groups"
-            component={GroupsScreen}
+            name="Checklist"
+            component={ChecklistScreen}
             options={{
-              drawerLabel: ({ }) => <Title style={styles.drawerLabelStyle}>Groups</Title>,
-              drawerIcon: ({ }) => <Icon name="account-group-outline" size={25} color={StyleConstants.COLOR_TEXT_LIGHT} />,
+              drawerLabel: ({ }) => <Title style={styles.drawerLabelStyle}>Checklist</Title>,
+              drawerIcon: ({ }) => <Icon name="checkbox-marked-outline" size={25} color={StyleConstants.COLOR_TEXT_LIGHT} />,
+            }}
+          />
+
+          <Drawer.Screen
+            name="Quiz"
+            component={QuizScreen}
+            options={{
+              drawerLabel: ({ }) => <Title style={styles.drawerLabelStyle}>Quiz</Title>,
+              drawerIcon: ({ }) => <Icon name="help-circle-outline" size={25} color={StyleConstants.COLOR_TEXT_LIGHT} />,
             }}
           />
         </Drawer.Navigator>
