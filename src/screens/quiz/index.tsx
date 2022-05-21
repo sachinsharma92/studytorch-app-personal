@@ -1,40 +1,14 @@
 import React, { useState } from 'react'
-import { StyleSheet, ScrollView, View, TouchableOpacity, useWindowDimensions } from 'react-native'
+import { StyleSheet, ScrollView, View, TouchableOpacity } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import BottomModal from '../../common/bottomModal'
 import Title from '../../components/Typography/Title'
 import { StyleConstants } from '../../styles/style-constants';
 import ButtonPrimary from '../../common/buttonPrimary';
-import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
-import ActiveQuizCard from '../../components/quiz/activeQuizCard';
-import CompletedQuizCard from '../../components/quiz/completedQuizCard';
 import DropdownPrimary from '../../common/dropdownPrimary';
 import SubText from '../../components/Typography/SubText';
 import { RadioButton } from 'react-native-paper';
-
-
-const infoCardList = [1, 2, 3, 4,]
-
-const FirstRoute = () => (
-	<View style={styles.cardSection}>
-		{infoCardList.map(() => (
-			<ActiveQuizCard />
-		))}
-	</View>
-);
-
-const SecondRoute = () => (
-	<View style={styles.cardSection}>
-		{infoCardList.map(() => (
-			<CompletedQuizCard />
-		))}
-	</View>
-);
-
-const renderScene = SceneMap({
-	first: FirstRoute,
-	second: SecondRoute,
-});
+import QuizTabView from '../../components/quiz/quizTabView'
 
 const collectionItems = ["All", "Group 1", "Group 2", "Group 3"]
 
@@ -46,37 +20,12 @@ export default function QuizScreen() {
 		setCreateChecklist(!isCreateChecklist);
 	};
 
-	const layout = useWindowDimensions();
-	const [index, setIndex] = React.useState(0);
-	const [routes] = React.useState([
-		{ key: 'first', title: 'Active Quizes (3)' },
-		{ key: 'second', title: 'Completed Quizes (2)' },
-	]);
-
 	return (
-		<SafeAreaView style={{ flex: 1 }}>
+		<SafeAreaView style={{ flex: 1,	backgroundColor: 'white', }}>
 			<ScrollView>
 				<View style={styles.container}>
 					<Title style={styles.title1}>Study Checklist</Title>
-					<TabView
-						navigationState={{ index, routes }}
-						renderScene={renderScene}
-						onIndexChange={setIndex}
-						swipeEnabled={false}
-						initialLayout={{ width: layout.width, }}
-						style={{ height: layout.height }}
-						renderTabBar={props => (
-							<TabBar
-								{...props}
-								indicatorStyle={styles.indicatorStyle}
-								tabStyle={{ flex: 1, }}
-								scrollEnabled={true}
-								style={{ backgroundColor: 'white', }}
-								labelStyle={{ color: StyleConstants.COLOR_TEXT, fontFamily: 'Sofia-Pro-Regular', textTransform: 'none', width: '100%', flex: 1 }}
-								activeColor={StyleConstants.COLOR_PRIMARY}
-							/>
-						)}
-					/>
+					<QuizTabView />
 				</View>
 			</ScrollView>
 
@@ -129,15 +78,13 @@ const styles = StyleSheet.create({
 	title1: {
 		fontSize: 20,
 		marginBottom: 10,
-		marginHorizontal: 20
 	},
 	title2: {
 		fontSize: 20,
 		marginBottom: 5
 	},
 	container: {
-		backgroundColor: 'white',
-		flex: 1,
+		paddingHorizontal: 20
 	},
 	cardSection: {
 		flexDirection: 'row',

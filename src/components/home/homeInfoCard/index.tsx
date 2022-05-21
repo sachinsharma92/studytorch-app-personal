@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, StyleSheet, View } from 'react-native'
+import { Image, StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 import Title from '../../Typography/Title';
 import SubText from '../../Typography/SubText';
 import { StyleConstants } from '../../../styles/style-constants';
@@ -11,12 +11,14 @@ interface HomeInfoCardProps {
   imgUrl?: any,
   subText?: string,
   title?: string
+  cardStyle?: any
+  imgStyle?: StyleProp<ViewStyle>,
 }
 
-export default function HomeInfoCard({ imgUrl, subText, title }: HomeInfoCardProps) {
+export default function HomeInfoCard({ imgUrl, subText, title, cardStyle, imgStyle }: HomeInfoCardProps) {
   return (
-    <View style={styles.cardStyle}>
-      <View style={styles.imgBox}>
+    <View style={[styles.cardStyle, cardStyle]}>
+      <View style={[styles.imgBox, imgStyle]}>
         <Image
           style={styles.imgStyle}
           source={imgUrl}

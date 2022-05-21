@@ -2,12 +2,9 @@ import React, { useState } from 'react'
 import { TouchableOpacity, StyleSheet, View } from 'react-native'
 import Title from '../../Typography/Title';
 import { StyleConstants } from '../../../styles/style-constants';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import CheckboxPrimary from '../../../common/checkboxPrimary';
-import InputPrimary from '../../../common/inputPrimary';
 import SubText from '../../Typography/SubText';
 import ButtonPrimary from '../../../common/buttonPrimary';
-import { ProgressBar, Colors } from 'react-native-paper';
+import { ProgressBar } from 'react-native-paper';
 import QuizModal from '../quizModal';
 
 interface ActiveQuizCardProps {
@@ -15,24 +12,6 @@ interface ActiveQuizCardProps {
   nameCount?: string,
   plushandler?: () => void,
 }
-
-const checklistData = [
-  {
-    labelText: 'Add prototype device type'
-  },
-  {
-    labelText: 'Do we need a design for the new SE?'
-  },
-  {
-    labelText: 'Link design in JIRA'
-  },
-  {
-    labelText: 'Draw new chevron icon'
-  },
-  {
-    labelText: 'Draw new chevron icon'
-  }
-]
 
 export default function ActiveQuizCard({ dotHandler, nameCount, plushandler }: ActiveQuizCardProps) {
   const [isQuizName, setQuizName] = useState(false);
@@ -53,14 +32,13 @@ export default function ActiveQuizCard({ dotHandler, nameCount, plushandler }: A
         </View>
 
         <View style={styles.takeQuizStyle}>
-          <View>
+          <View style={{ flex: 1, paddingRight: 30 }}>
             <Title style={styles.parentageText}>30% Complete</Title>
             <ProgressBar progress={0.5} color={'#4AAE8C'} style={{ borderRadius: 10, marginTop: 10, height: 6 }} />
           </View>
           <ButtonPrimary buttonStyle={{ minHeight: 40 }} label="Take Quiz" />
         </View>
       </TouchableOpacity>
-
       <QuizModal isVisible={isQuizName} closeHandler={quizNameToggleModal} />
     </>
   )

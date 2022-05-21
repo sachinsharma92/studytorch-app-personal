@@ -11,6 +11,8 @@ import ButtonPrimary from '../../common/buttonPrimary';
 import NotesCard from '../../components/notesCard';
 import QusestionCard from '../../components/qusestionCard';
 import FlashCard from '../../components/flashCard';
+import QuizTabView from '../../components/quiz/quizTabView';
+import ReportComponent from '../../components/reportsComponent';
 
 
 const infoCardList = [
@@ -67,7 +69,7 @@ const questionList = [
 	},
 ]
 
-export default function CollectionDetailScreen() {
+export default function SharedDetailsScreen() {
 	const [isModalVisible, setModalVisible] = useState(false);
 	const toggleModal = () => {
 		setModalVisible(!isModalVisible);
@@ -108,11 +110,27 @@ export default function CollectionDetailScreen() {
 		</View>
 	);
 
+	const FifthRoute = () => (
+		<View>
+			{questionList.map((item) => (
+				<QuizTabView />
+			))}
+		</View>
+	);
+
+	const SixthRoute = () => (
+		<View style={{ flex: 1, }}>
+			<ReportComponent />
+		</View>
+	);
+
 	const renderScene = SceneMap({
 		first: FirstRoute,
 		second: SecondRoute,
 		third: ThirdRoute,
 		forth: ForthRoute,
+		fifth: FifthRoute,
+		sixth: SixthRoute,
 	});
 
 	const layout = useWindowDimensions();
@@ -122,6 +140,8 @@ export default function CollectionDetailScreen() {
 		{ key: 'second', title: 'Notes' },
 		{ key: 'third', title: 'Question' },
 		{ key: 'forth', title: 'Flash Card' },
+		{ key: 'fifth', title: 'Quiz' },
+		{ key: 'sixth', title: 'Reports' },
 	]);
 
 	return (
@@ -143,15 +163,16 @@ export default function CollectionDetailScreen() {
 						onIndexChange={setIndex}
 						swipeEnabled={false}
 						initialLayout={{ width: layout.width, }}
-						style={{ height: layout.height }}
+						style={{ height: layout.height}}
+						// sceneContainerStyle={{flex: 1}}
 						renderTabBar={props => (
 							<TabBar
 								{...props}
 								indicatorStyle={styles.indicatorStyle}
-								tabStyle={{ flex: 1, }}
+								tabStyle={{ flex: 1,}}
 								scrollEnabled={true}
 								style={{ backgroundColor: 'white', }}
-								labelStyle={{ color: StyleConstants.COLOR_TEXT, fontFamily: 'Sofia-Pro-Regular', textTransform: 'none', width: '100%', flex: 1 }}
+								labelStyle={{ color: StyleConstants.COLOR_TEXT, fontFamily: 'Sofia-Pro-Regular', textTransform: 'none', width: '100%', }}
 								activeColor={StyleConstants.COLOR_PRIMARY}
 							/>
 						)}
@@ -197,9 +218,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 	cardSection: {
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		flexWrap: 'wrap'
+		flex: 1
 	},
 	button: {
 		flexDirection: 'row',
