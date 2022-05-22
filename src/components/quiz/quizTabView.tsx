@@ -10,7 +10,7 @@ const infoCardList = [1, 2, 3, 4,]
 const FirstRoute = () => (
   <View style={styles.cardSection}>
     {infoCardList.map(() => (
-      <ActiveQuizCard />
+      <ActiveQuizCard avgMark circleChartActive label="See Details" />
     ))}
   </View>
 );

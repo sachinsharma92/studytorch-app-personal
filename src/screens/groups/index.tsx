@@ -53,11 +53,11 @@ export default function GroupsScreen() {
 					<Title style={styles.title1}>Groups</Title>
 					<View style={styles.cardSection}>
 						{infoCardList.map((item) => (
-							<GroupsCard 
-							title={item.title} 
-							subText={item.subtext} 
-							dotHandler={toggleModal} 
-							bgStyle={item.cardColor}
+							<GroupsCard
+								title={item.title}
+								subText={item.subtext}
+								dotHandler={toggleModal}
+								bgStyle={item.cardColor}
 							/>
 						))}
 					</View>

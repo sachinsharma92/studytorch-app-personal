@@ -23,15 +23,16 @@ interface DropdownPrimaryProps {
   style?: StyleProp<ViewStyle>,
   infoText?: any,
   inputStyle?: StyleProp<ViewStyle>,
-  defaultButtonText?: any
+  defaultButtonText?: any,
+  dropdownStyle?: StyleProp<ViewStyle>,
 }
 
-export default function DropdownPrimary({ data, style, label, infoText, defaultButtonText }: DropdownPrimaryProps) {
+export default function DropdownPrimary({ data, style, label, infoText, defaultButtonText, dropdownStyle }: DropdownPrimaryProps) {
   return (
     <View style={style}>
       {label && <Title style={styles.label}>{label}</Title>}
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: "space-between" }}>
-        <View style={[styles.selectInputStyle]}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: "space-between", minWidth: 100 }}>
+        <View style={[styles.selectInputStyle, dropdownStyle]}>
           <SelectDropdown
             defaultValue={'hello'}
             data={data}

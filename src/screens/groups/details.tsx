@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, ScrollView, View, TouchableOpacity, useWindowDimensions } from 'react-native'
+import { StyleSheet, ScrollView, View, TouchableOpacity, useWindowDimensions, Image } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import BottomModal from '../../common/bottomModal'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -13,6 +13,8 @@ import QusestionCard from '../../components/qusestionCard';
 import FlashCard from '../../components/flashCard';
 import QuizTabView from '../../components/quiz/quizTabView';
 import ReportComponent from '../../components/reportsComponent';
+import StackImage from '../../common/stackImage';
+import GroupMemberCard from '../../components/groups/groupMember';
 
 
 const infoCardList = [
@@ -69,16 +71,26 @@ const questionList = [
 	},
 ]
 
-export default function SharedDetailsScreen() {
-	const [isModalVisible, setModalVisible] = useState(false);
-	const toggleModal = () => {
-		setModalVisible(!isModalVisible);
+export default function GroupDetailScreen() {
+	const [isModalJoined, setModalJoined] = useState(false);
+	const toggleJoinedeModal = () => {
+		setModalJoined(!isModalJoined);
+	};
+
+	const [isGroupMemberModal, setGroupMemberModal] = useState(false);
+	const groupMembertoggleModal = () => {
+		setGroupMemberModal(!isGroupMemberModal);
+	};
+
+	const [isModalEditShow, setModalEditShow] = useState(false);
+	const toggleEditShowModal = () => {
+		setModalEditShow(!isModalEditShow);
 	};
 
 	const FirstRoute = () => (
 		<View style={styles.cardSection}>
 			{infoCardList.map((item) => (
-				<CallectionCard dotHandler={toggleModal} title={item.title} subText={item.subtext}
+				<CallectionCard title={item.title} subText={item.subtext}
 				/>
 			))}
 		</View>
@@ -87,7 +99,7 @@ export default function SharedDetailsScreen() {
 	const SecondRoute = () => (
 		<View style={styles.cardSection}>
 			{infoCardList.map((item) => (
-				<NotesCard dotHandler={toggleModal} title={item.title} subText={item.subtext}
+				<NotesCard title={item.title} subText={item.subtext}
 				/>
 			))}
 		</View>
@@ -96,7 +108,7 @@ export default function SharedDetailsScreen() {
 	const ThirdRoute = () => (
 		<View style={styles.cardSection}>
 			{questionList.map((item) => (
-				<QusestionCard dotHandler={toggleModal} title={item.title} subText={item.subtext} />
+				<QusestionCard title={item.title} subText={item.subtext} />
 			))}
 		</View>
 	);
@@ -104,9 +116,23 @@ export default function SharedDetailsScreen() {
 	const ForthRoute = () => (
 		<View style={styles.cardSection}>
 			{infoCardList.map((item) => (
-				<FlashCard dotHandler={toggleModal} title={item.title} subText={item.subtext}
+				<FlashCard title={item.title} subText={item.subtext}
 				/>
 			))}
+		</View>
+	);
+
+	const FifthRoute = () => (
+		<View>
+			{questionList.map((item) => (
+				<QuizTabView />
+			))}
+		</View>
+	);
+
+	const SixthRoute = () => (
+		<View style={{ flex: 1, }}>
+			<ReportComponent />
 		</View>
 	);
 
@@ -115,6 +141,8 @@ export default function SharedDetailsScreen() {
 		second: SecondRoute,
 		third: ThirdRoute,
 		forth: ForthRoute,
+		fifth: FifthRoute,
+		sixth: SixthRoute,
 	});
 
 	const layout = useWindowDimensions();
@@ -124,19 +152,36 @@ export default function SharedDetailsScreen() {
 		{ key: 'second', title: 'Notes' },
 		{ key: 'third', title: 'Question' },
 		{ key: 'forth', title: 'Flash Card' },
+		{ key: 'fifth', title: 'Quiz' },
+		{ key: 'sixth', title: 'Reports' },
 	]);
 
 	return (
-		<SafeAreaView style={{ flex: 1 }}>
-			<ScrollView>
+		<SafeAreaView style={{ flex: 1, backgroundColor: 'white', }}>
+			<View style={styles.imgBanner}>
+				<Image
+					style={styles.bannerImage}
+					source={{
+						uri: 'https://images.unsplash.com/photo-1560785496-3c9d27877182?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674',
+					}}
+				/>
+			</View>
+			<ScrollView style={{ paddingVertical: 20 }}>
 				<View style={styles.container}>
-					<View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
+					<View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', }}>
 						<TouchableOpacity style={{ flexDirection: 'row', }}>
 							<Icon size={24} name="arrow-left" />
 							<Title style={[styles.title1]}>Maths</Title>
 						</TouchableOpacity>
+						<View style={styles.buttonSection}>
+							<ButtonPrimary onPress={toggleJoinedeModal} buttonStyle={styles.buttonOutline} textStyle={{ fontSize: 14, color: StyleConstants.COLOR_PRIMARY }} label="Joined" />
+							<ButtonPrimary onPress={groupMembertoggleModal} buttonStyle={{ minHeight: 35, borderRadius: 50, paddingHorizontal: 10 }} textStyle={{ fontSize: 14 }} label="Member" />
+							<TouchableOpacity onPress={toggleEditShowModal} style={[styles.dotButton, { marginLeft: 10 }]}><Icon name="dots-vertical" size={24} /></TouchableOpacity>
+						</View>
+					</View>
 
-						<ButtonPrimary buttonStyle={{ minHeight: 40, borderRadius: 50 }} leftIcon={'share-variant'} leftIconColor="white" textStyle={{ lineHeight: 20 }} label="Share" />
+					<View style={{ marginBottom: 10 }}>
+						<StackImage />
 					</View>
 
 					<TabView
@@ -145,13 +190,13 @@ export default function SharedDetailsScreen() {
 						onIndexChange={setIndex}
 						swipeEnabled={false}
 						initialLayout={{ width: layout.width, }}
-						style={{ height: layout.height}}
+						style={{ height: layout.height }}
 						// sceneContainerStyle={{flex: 1}}
 						renderTabBar={props => (
 							<TabBar
 								{...props}
 								indicatorStyle={styles.indicatorStyle}
-								tabStyle={{ flex: 1,}}
+								tabStyle={{ flex: 1, }}
 								scrollEnabled={true}
 								style={{ backgroundColor: 'white', }}
 								labelStyle={{ color: StyleConstants.COLOR_TEXT, fontFamily: 'Sofia-Pro-Regular', textTransform: 'none', width: '100%', }}
@@ -160,26 +205,33 @@ export default function SharedDetailsScreen() {
 						)}
 					/>
 				</View>
-
-				<BottomModal isVisible={isModalVisible} onBackdropPress={toggleModal}>
-					<TouchableOpacity style={styles.button}>
-						<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="pencil" />
-						<Title style={styles.buttonTitle}>Rename</Title>
-					</TouchableOpacity>
-					<TouchableOpacity style={styles.button}>
-						<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="delete" />
-						<Title style={styles.buttonTitle}>Delete</Title>
-					</TouchableOpacity>
-					{/* <TouchableOpacity style={styles.button}>
-						<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="information" />
-						<Title style={styles.buttonTitle}>Get Details</Title>
-					</TouchableOpacity>
-					<TouchableOpacity style={styles.button}>
-						<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="share-variant" />
-						<Title style={styles.buttonTitle}>Share</Title>
-					</TouchableOpacity> */}
-				</BottomModal>
 			</ScrollView>
+
+			{/* Joined Confirm Modal */}
+			<BottomModal isVisible={isModalJoined} onBackdropPress={toggleJoinedeModal}>
+				<TouchableOpacity style={styles.button}>
+					<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="delete" />
+					<Title style={styles.buttonTitle}>Delete Group</Title>
+				</TouchableOpacity>
+				<TouchableOpacity style={styles.button}>
+					<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="login-variant" />
+					<Title style={styles.buttonTitle}>Leave Group</Title>
+				</TouchableOpacity>
+			</BottomModal>
+
+				{/* Joined Confirm Modal */}
+				<BottomModal isVisible={isModalEditShow} onBackdropPress={toggleEditShowModal}>
+				<TouchableOpacity style={styles.button}>
+					<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="pencil" />
+					<Title style={styles.buttonTitle}>Edit Group</Title>
+				</TouchableOpacity>
+				<TouchableOpacity style={styles.button}>
+					<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="pencil" />
+					<Title style={styles.buttonTitle}>Show Cover</Title>
+				</TouchableOpacity>
+			</BottomModal>
+
+			<GroupMemberCard isVisible={isGroupMemberModal} onBackdropPress={groupMembertoggleModal} />
 		</SafeAreaView>
 	)
 }
@@ -196,7 +248,6 @@ const styles = StyleSheet.create({
 	},
 	container: {
 		paddingHorizontal: 20,
-		backgroundColor: 'white',
 		flex: 1,
 	},
 	cardSection: {
@@ -224,4 +275,31 @@ const styles = StyleSheet.create({
 		borderTopStartRadius: StyleConstants.BORDER_RADIUS,
 		height: 4,
 	},
+	bannerImage: {
+		height: '100%',
+		width: '100%',
+		resizeMode: 'cover'
+	},
+	imgBanner: {
+		height: 150,
+		backgroundColor: '#eeeeee'
+	},
+	buttonSection: {
+		flexDirection: 'row',
+		alignItems:'center',
+		justifyContent: 'space-between'
+	},
+	buttonOutline: {
+		minHeight: 35,
+		borderRadius: 50,
+		paddingHorizontal: 10,
+		marginRight: 5,
+		backgroundColor: 'transparent',
+		borderWidth: 1,
+		borderColor: StyleConstants.COLOR_PRIMARY
+	},
+	dotButton: {
+    backgroundColor: '#FAFAFB',
+    borderRadius: 50
+  },
 })

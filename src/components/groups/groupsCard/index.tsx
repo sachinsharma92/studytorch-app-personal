@@ -5,33 +5,17 @@ import SubText from '../../Typography/SubText';
 import { StyleConstants } from '../../../styles/style-constants';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CurveLines from "../../../assets/images/illustration/curve-lines.svg"
+import StackImage from '../../../common/stackImage';
 
 interface GroupsCardProps {
   dotHandler?: any,
   subText?: string,
   title?: string,
   bgStyle?: any,
-  imageStackHandler?: () => void,
 }
 
-const imageStack = [
-  {
-    imgLess: 0
-  },
-  {
-    imgLess: -5
-  },
-  {
-    imgLess: -10
-  },
-  {
-    imgLess: -15
-  },
-  {
-    imgLess: -20
-  },
-]
-export default function GroupsCard({ dotHandler, subText, title, bgStyle, imageStackHandler }: GroupsCardProps) {
+export default function GroupsCard({ dotHandler, subText, title, bgStyle }: GroupsCardProps) {
+
   return (
     <View style={[styles.cardStyle, { backgroundColor: bgStyle }]}>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
@@ -42,17 +26,7 @@ export default function GroupsCard({ dotHandler, subText, title, bgStyle, imageS
         <TouchableOpacity onPress={dotHandler} style={styles.dotButton}><Icon name="dots-vertical" size={24} /></TouchableOpacity>
       </View>
 
-      <View style={styles.imageStack}>
-        {imageStack.map((item) => (
-          <Image
-            style={[styles.tinyLogo, {left: item.imgLess}]}
-            source={{
-              uri: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-            }}
-          />
-        ))}
-        <TouchableOpacity onPress={imageStackHandler} style={styles.count}><Title style={{color:'white', fontSize: 14,}}>+1</Title></TouchableOpacity>
-      </View>
+      <StackImage/>
 
       <CurveLines style={styles.curveLines}/>
     </View>
@@ -94,23 +68,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'white',
     zIndex: 1,
-  },
-  imageStack: {
-    flexDirection: 'row',
-    width: '100%',
-    marginTop: 30,
-  },
-  count: {
-    borderWidth: 1,
-    borderColor: 'white',
-    backgroundColor:StyleConstants.COLOR_PRIMARY,
-    width: 30,
-    height: 30,
-    borderRadius: 50,
-    alignItems:'center',
-    justifyContent:'center',
-    left: -30,
-    zIndex: 1
   },
   curveLines: {
     position:'absolute',

@@ -6,14 +6,34 @@ import SubText from '../../Typography/SubText';
 import ButtonPrimary from '../../../common/buttonPrimary';
 import { ProgressBar } from 'react-native-paper';
 import QuizModal from '../quizModal';
+import PieChart from 'react-native-pie-chart';
 
+const widthAndHeight = 86
+const series = [400, 300,]
+const chartData = [
+  {
+    title: 'Unsuccessful',
+    bgColor: '#e1fcef',
+    number: '1'
+  },
+  {
+    title: 'Successful',
+    bgColor: '#66cb9f',
+    number: '150'
+  },
+]
+
+const sliceColor = ['#e1fcef', '#66cb9f']
 interface ActiveQuizCardProps {
   dotHandler?: () => void,
   nameCount?: string,
   plushandler?: () => void,
+  circleChartActive?: any,
+  label?: string,
+  avgMark?: boolean
 }
 
-export default function ActiveQuizCard({ dotHandler, nameCount, plushandler }: ActiveQuizCardProps) {
+export default function ActiveQuizCard({ dotHandler, nameCount, plushandler, circleChartActive, label="Take Quiz", avgMark }: ActiveQuizCardProps) {
   const [isQuizName, setQuizName] = useState(false);
   const quizNameToggleModal = () => {
     setQuizName(!isQuizName);
@@ -28,15 +48,36 @@ export default function ActiveQuizCard({ dotHandler, nameCount, plushandler }: A
             <SubText style={{ color: StyleConstants.COLOR_TEXT, fontSize: 16 }}>Collection name</SubText>
             <SubText>22nd Sep 2021</SubText>
           </View>
-          <TouchableOpacity onPress={dotHandler} style={styles.greenBadge}><Title style={{ color: '#4AAE8C', fontSize: 15, lineHeight: 16 }}>In-progress</Title></TouchableOpacity>
+
+          {!circleChartActive ?
+            <TouchableOpacity onPress={dotHandler} style={styles.greenBadge}><Title style={{ color: '#4AAE8C', fontSize: 15, lineHeight: 16 }}>In-progress</Title></TouchableOpacity>
+            :
+            <View style={styles.circleChart}>
+              <PieChart
+                widthAndHeight={widthAndHeight}
+                series={series}
+                sliceColor={sliceColor}
+                doughnut={true}
+                coverRadius={0.85}
+              />
+              <View style={styles.attendanceStyle}>
+                <Title style={{fontSize:16}}>70%</Title>
+                <Title style={{fontSize: 10, opacity: 0.7}}>Attendance</Title>
+              </View>
+            </View>
+          }
+
         </View>
 
         <View style={styles.takeQuizStyle}>
-          <View style={{ flex: 1, paddingRight: 30 }}>
+          {!avgMark ? <View style={{ flex: 1, paddingRight: 30 }}>
             <Title style={styles.parentageText}>30% Complete</Title>
             <ProgressBar progress={0.5} color={'#4AAE8C'} style={{ borderRadius: 10, marginTop: 10, height: 6 }} />
           </View>
-          <ButtonPrimary buttonStyle={{ minHeight: 40 }} label="Take Quiz" />
+          :
+          <Title level={3} style={{fontFamily: 'Sofia-Pro-Medium',}}>Avg Marks: <Title level={3} style={{fontFamily: 'Sofia-Pro-Medium', color: 'green'}}>70%</Title></Title>
+        }
+          <ButtonPrimary buttonStyle={{ minHeight: 40 }} label={label} textStyle={{lineHeight: 20}} />
         </View>
       </TouchableOpacity>
       <QuizModal isVisible={isQuizName} closeHandler={quizNameToggleModal} />
@@ -55,7 +96,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: 15
+    paddingVertical: 15,
   },
   title1: {
     fontSize: 18,
@@ -121,7 +162,7 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingBottom: 15,
     marginBottom: 20,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   },
   greenBadge: {
     borderWidth: 1,
@@ -138,5 +179,17 @@ const styles = StyleSheet.create({
     fontSize: 14,
     opacity: 1,
     color: '#4AAE8C'
+  },
+  circleChart: {
+
+  },
+  attendanceStyle: {
+    position:'absolute',
+    top: 25,
+    right: 0,
+    left: 0,
+    textAlign:'center',
+    alignItems:'center',
+    justifyContent:'center',
   }
 })

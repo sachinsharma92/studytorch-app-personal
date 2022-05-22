@@ -1,6 +1,5 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler';
 import { StyleConstants } from '../../styles/style-constants';
 import HomeInfoCard from '../home/homeInfoCard';
 import ActiveQuizCard from '../quiz/activeQuizCard';
@@ -37,12 +36,6 @@ const quizCardList = [1, 2, 3, 4,]
 export default function ReportComponent({ dotHandler, subText, title, cardHandler }: ReportComponentProps) {
   return (
     <>
-      <View style={{ paddingVertical: 30 }}>
-        <Title level={2}>Quiz Reports</Title>
-        {quizCardList.map(() => (
-          <ActiveQuizCard />
-        ))}
-      </View>
       {infoCardList.map((item) => (
         <HomeInfoCard
           title={item.title}
@@ -51,6 +44,13 @@ export default function ReportComponent({ dotHandler, subText, title, cardHandle
           imgStyle={{ marginRight: 20 }}
         />
       ))}
+
+      <View style={{ paddingVertical: 30 }}>
+        <Title level={2}>Quiz Reports</Title>
+        {quizCardList.map(() => (
+          <ActiveQuizCard />
+        ))}
+      </View>
     </>
   )
 }

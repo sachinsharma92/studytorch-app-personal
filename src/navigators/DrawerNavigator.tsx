@@ -18,6 +18,7 @@ import ChecklistScreen from '../screens/checklist';
 import QuizScreen from '../screens/quiz';
 import CollectionDetailScreen from '../screens/collections/details';
 import SharedDetailsScreen from '../screens/sharedWithMe/details';
+import GroupDetailScreen from '../screens/groups/details';
 
 const Drawer = createDrawerNavigator();
 
@@ -132,6 +133,15 @@ export default function DrawerNavigator(props: any) {
             component={SharedDetailsScreen}
             options={{
               drawerLabel: ({ }) => <Title style={styles.drawerLabelStyle}>Shared Details</Title>,
+              drawerIcon: ({ }) => <Icon name="help-circle-outline" size={25} color={StyleConstants.COLOR_TEXT_LIGHT} />,
+            }}
+          />
+
+          <Drawer.Screen
+            name="Group Details"
+            component={GroupDetailScreen}
+            options={{
+              drawerLabel: ({ }) => <Title style={styles.drawerLabelStyle}>Group Details</Title>,
               drawerIcon: ({ }) => <Icon name="help-circle-outline" size={25} color={StyleConstants.COLOR_TEXT_LIGHT} />,
             }}
           />
