@@ -15,6 +15,7 @@ import QuizTabView from '../../components/quiz/quizTabView';
 import ReportComponent from '../../components/reportsComponent';
 import StackImage from '../../common/stackImage';
 import GroupMemberCard from '../../components/groups/groupMember';
+import ConfirmationModal from '../../common/confirmationModal';
 
 
 const infoCardList = [
@@ -85,6 +86,18 @@ export default function GroupDetailScreen() {
 	const [isModalEditShow, setModalEditShow] = useState(false);
 	const toggleEditShowModal = () => {
 		setModalEditShow(!isModalEditShow);
+	};
+
+	const [isDeleteModal, setDeleteModal] = useState(false);
+	const deleteToggleModal = () => {
+		setDeleteModal(!isDeleteModal);
+		setModalJoined(false);
+	};
+
+	const [isLeaveGroupModal, setLeaveGroupModal] = useState(false);
+	const leaveGroupToggleModal = () => {
+		setLeaveGroupModal(!isLeaveGroupModal);
+		setModalJoined(false);
 	};
 
 	const FirstRoute = () => (
@@ -209,18 +222,18 @@ export default function GroupDetailScreen() {
 
 			{/* Joined Confirm Modal */}
 			<BottomModal isVisible={isModalJoined} onBackdropPress={toggleJoinedeModal}>
-				<TouchableOpacity style={styles.button}>
+				<TouchableOpacity onPress={deleteToggleModal} style={styles.button}>
 					<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="delete" />
 					<Title style={styles.buttonTitle}>Delete Group</Title>
 				</TouchableOpacity>
-				<TouchableOpacity style={styles.button}>
+				<TouchableOpacity onPress={leaveGroupToggleModal} style={styles.button}>
 					<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="login-variant" />
 					<Title style={styles.buttonTitle}>Leave Group</Title>
 				</TouchableOpacity>
 			</BottomModal>
 
-				{/* Joined Confirm Modal */}
-				<BottomModal isVisible={isModalEditShow} onBackdropPress={toggleEditShowModal}>
+			{/* Joined Confirm Modal */}
+			<BottomModal isVisible={isModalEditShow} onBackdropPress={toggleEditShowModal}>
 				<TouchableOpacity style={styles.button}>
 					<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="pencil" />
 					<Title style={styles.buttonTitle}>Edit Group</Title>
@@ -232,6 +245,15 @@ export default function GroupDetailScreen() {
 			</BottomModal>
 
 			<GroupMemberCard isVisible={isGroupMemberModal} onBackdropPress={groupMembertoggleModal} />
+
+			<ConfirmationModal cancelHanlder={deleteToggleModal} isVisible={isDeleteModal} footerShow>
+				<Title level={2} style={{ lineHeight: 30 }}>Are you sure you want to delete this Group!</Title>
+			</ConfirmationModal>
+
+			<ConfirmationModal labelYes="Yes, Leave" closeHandler={leaveGroupToggleModal} cancelHanlder={leaveGroupToggleModal} isVisible={isLeaveGroupModal} footerShow>
+				<Title level={2} style={{ lineHeight: 30 }}>Are you sure you want to leave the</Title>
+				<Title level={2} style={{ lineHeight: 30, color: StyleConstants.COLOR_PRIMARY, marginTop: 10 }}>Maths Group ?</Title>
+			</ConfirmationModal>
 		</SafeAreaView>
 	)
 }
@@ -286,7 +308,7 @@ const styles = StyleSheet.create({
 	},
 	buttonSection: {
 		flexDirection: 'row',
-		alignItems:'center',
+		alignItems: 'center',
 		justifyContent: 'space-between'
 	},
 	buttonOutline: {
@@ -299,7 +321,7 @@ const styles = StyleSheet.create({
 		borderColor: StyleConstants.COLOR_PRIMARY
 	},
 	dotButton: {
-    backgroundColor: '#FAFAFB',
-    borderRadius: 50
-  },
+		backgroundColor: '#FAFAFB',
+		borderRadius: 50
+	},
 })

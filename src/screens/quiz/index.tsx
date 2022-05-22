@@ -9,6 +9,7 @@ import DropdownPrimary from '../../common/dropdownPrimary';
 import SubText from '../../components/Typography/SubText';
 import { RadioButton } from 'react-native-paper';
 import QuizTabView from '../../components/quiz/quizTabView'
+import InputPrimary from '../../common/inputPrimary'
 
 const collectionItems = ["All", "Group 1", "Group 2", "Group 3"]
 
@@ -21,7 +22,7 @@ export default function QuizScreen() {
 	};
 
 	return (
-		<SafeAreaView style={{ flex: 1,	backgroundColor: 'white', }}>
+		<SafeAreaView style={{ flex: 1, backgroundColor: 'white', }}>
 			<ScrollView>
 				<View style={styles.container}>
 					<Title style={styles.title1}>Study Checklist</Title>
@@ -35,12 +36,24 @@ export default function QuizScreen() {
 
 			<BottomModal isVisible={isCreateChecklist} onBackdropPress={checklistToggleModal}>
 				<Title level={2}>Create Quiz <Title style={{ color: '#999', fontSize: 20 }}>(1/2)</Title></Title>
-				<View style={{ marginTop: 50 }}>
+
+				<InputPrimary
+					label="Quiz Name"
+					placeholder="Quiz Name"
+					style={{ marginTop: 30 }}
+				/>
+
+				<View style={{ marginTop: 30 }}>
 					<DropdownPrimary defaultButtonText={<SubText style={{ opacity: 0.7 }}>Select Collection</SubText>} data={collectionItems} label="Collection" />
 				</View>
-				<View style={{ marginTop: 30 }}>
-					<DropdownPrimary defaultButtonText={<SubText style={{ opacity: 0.7 }}>Select Collection</SubText>} data={collectionItems} label="No. of Questions" />
-				</View>
+				
+				<InputPrimary
+					label="No. of Questions"
+					placeholder="Select No. of Questions"
+					style={{ marginTop: 30 }}
+					keyboardType="numeric"
+				/>
+
 				<View style={styles.radioSection}>
 					<SubText style={{ fontSize: 14, color: StyleConstants.COLOR_TEXT }}>Include sub questions</SubText>
 					<View style={{ flexDirection: 'row', marginTop: 5 }}>
@@ -67,7 +80,7 @@ export default function QuizScreen() {
 
 				<View style={styles.buttonSection}>
 					<ButtonPrimary buttonStyle={{ marginRight: 20, backgroundColor: 'transparent' }} textStyle={{ color: StyleConstants.COLOR_TEXT }} onPress={checklistToggleModal} label="Cancel" />
-					<ButtonPrimary onPress={checklistToggleModal} label="Next" />
+					<ButtonPrimary onPress={checklistToggleModal} label="Create Quiz" />
 				</View>
 			</BottomModal>
 		</SafeAreaView>
@@ -146,7 +159,8 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'flex-end',
 		backgroundColor: StyleConstants.COLOR_GRAY_F6,
-		padding: 20,
+		padding: 10,
+		paddingHorizontal: 20,
 		marginHorizontal: -20,
 		marginTop: 30
 	},

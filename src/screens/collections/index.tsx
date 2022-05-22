@@ -7,6 +7,8 @@ import CallectionCard from '../../components/collections/callectionCard'
 import Title from '../../components/Typography/Title'
 import { StyleConstants } from '../../styles/style-constants';
 import { ROUTES } from '../../constants/routes';
+import CreateGroupModal from '../../components/groups/createGroupModal';
+import CreateModal from '../../common/createModal';
 
 
 const infoCardList = [
@@ -36,9 +38,9 @@ const infoCardList = [
 	},
 ]
 export default function CollectionsScreen() {
-	const [isModalVisible, setModalVisible] = useState(false);
-	const toggleModal = () => {
-		setModalVisible(!isModalVisible);
+	const [isCreateGroupModal, setCreateGroupModal] = useState(false);
+	const toggleCreateGroupModal = () => {
+		setCreateGroupModal(!isCreateGroupModal);
 	};
 
 	return (
@@ -49,34 +51,26 @@ export default function CollectionsScreen() {
 					<View style={styles.cardSection}>
 						{infoCardList.map((item) => (
 							<CallectionCard
-								cardHandler={ROUTES.COLLECTION_DETAILS_SCREEN}
 								title={item.title}
 								subText={item.subtext}
-								dotHandler={toggleModal}
 							/>
 						))}
 					</View>
 				</View>
-
-				<BottomModal isVisible={isModalVisible} onBackdropPress={toggleModal}>
-					<TouchableOpacity style={styles.button}>
-						<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="pencil" />
-						<Title style={styles.buttonTitle}>Rename</Title>
-					</TouchableOpacity>
-					<TouchableOpacity style={styles.button}>
-						<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="delete" />
-						<Title style={styles.buttonTitle}>Delete</Title>
-					</TouchableOpacity>
-					<TouchableOpacity style={styles.button}>
-						<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="information" />
-						<Title style={styles.buttonTitle}>Get Details</Title>
-					</TouchableOpacity>
-					<TouchableOpacity style={styles.button}>
-						<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="share-variant" />
-						<Title style={styles.buttonTitle}>Share</Title>
-					</TouchableOpacity>
-				</BottomModal>
 			</ScrollView>
+
+			<CreateModal
+				mainTitle="Create Collection"
+				inputPlaceholder='Ex. Maths'
+				inputlabel='Collection Name'
+				isVisible={isCreateGroupModal}
+				closeHandler={toggleCreateGroupModal}
+				onBackdropPress={toggleCreateGroupModal}
+			/>
+
+			<TouchableOpacity style={styles.buttonCreate} onPress={toggleCreateGroupModal}>
+				<Title style={styles.buttonCreateTitle}>+</Title>
+			</TouchableOpacity>
 		</SafeAreaView>
 	)
 }
@@ -116,5 +110,23 @@ const styles = StyleSheet.create({
 		marginLeft: 10,
 		fontSize: 16,
 		color: StyleConstants.COLOR_TEXT_LIGHT
-	}
+	},
+	buttonCreate: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center',
+		backgroundColor: StyleConstants.COLOR_PRIMARY,
+		marginBottom: 10,
+		borderRadius: 50,
+		width: 50,
+		height: 50,
+		position: 'absolute',
+		right: 20,
+		bottom: 10
+	},
+	buttonCreateTitle: {
+		fontSize: 26,
+		lineHeight: 30,
+		color: 'white'
+	},
 })

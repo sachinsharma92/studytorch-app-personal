@@ -35,12 +35,24 @@ export default function CallectionCard({ dotHandler, subText, title, cardHandler
 
       <BottomModal isVisible={isCollectionModal} onBackdropPress={collectionToggleModal}>
         <TouchableOpacity style={styles.button}>
-          <Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="pencil" />
+          <Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="pencil-outline" />
           <Title style={styles.buttonTitle}>Edit</Title>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button}>
-          <Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="delete" />
+          <Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="file-multiple-outline" />
+          <Title style={styles.buttonTitle}>Create Duplicate</Title>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="cloud-download-outline" />
+          <Title style={styles.buttonTitle}>Archive Collection</Title>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="delete-empty-outline" />
           <Title style={styles.buttonTitle}>Delete</Title>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="share-variant" />
+          <Title style={styles.buttonTitle}>Share to group</Title>
         </TouchableOpacity>
       </BottomModal>
     </View>

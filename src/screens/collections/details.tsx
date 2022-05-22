@@ -11,6 +11,7 @@ import ButtonPrimary from '../../common/buttonPrimary';
 import NotesCard from '../../components/notesCard';
 import QusestionCard from '../../components/qusestionCard';
 import FlashCard from '../../components/flashCard';
+import ShareCollectionModal from '../../components/collections/shareCollectionModal';
 
 
 const infoCardList = [
@@ -68,15 +69,15 @@ const questionList = [
 ]
 
 export default function CollectionDetailScreen() {
-	const [isModalVisible, setModalVisible] = useState(false);
-	const toggleModal = () => {
-		setModalVisible(!isModalVisible);
+	const [isShareCollectionVisible, setShareCollectionVisible] = useState(false);
+	const shareCollectionToggleModal = () => {
+		setShareCollectionVisible(!isShareCollectionVisible);
 	};
 
 	const FirstRoute = () => (
 		<View style={styles.cardSection}>
 			{infoCardList.map((item) => (
-				<CallectionCard dotHandler={toggleModal} title={item.title} subText={item.subtext}
+				<CallectionCard title={item.title} subText={item.subtext}
 				/>
 			))}
 		</View>
@@ -85,7 +86,7 @@ export default function CollectionDetailScreen() {
 	const SecondRoute = () => (
 		<View style={styles.cardSection}>
 			{infoCardList.map((item) => (
-				<NotesCard dotHandler={toggleModal} title={item.title} subText={item.subtext}
+				<NotesCard title={item.title} subText={item.subtext}
 				/>
 			))}
 		</View>
@@ -94,7 +95,7 @@ export default function CollectionDetailScreen() {
 	const ThirdRoute = () => (
 		<View style={styles.cardSection}>
 			{questionList.map((item) => (
-				<QusestionCard dotHandler={toggleModal} title={item.title} subText={item.subtext} />
+				<QusestionCard title={item.title} subText={item.subtext} />
 			))}
 		</View>
 	);
@@ -102,7 +103,7 @@ export default function CollectionDetailScreen() {
 	const ForthRoute = () => (
 		<View style={styles.cardSection}>
 			{infoCardList.map((item) => (
-				<FlashCard dotHandler={toggleModal} title={item.title} subText={item.subtext}
+				<FlashCard title={item.title} subText={item.subtext}
 				/>
 			))}
 		</View>
@@ -134,7 +135,7 @@ export default function CollectionDetailScreen() {
 							<Title style={[styles.title1]}>Maths</Title>
 						</TouchableOpacity>
 
-						<ButtonPrimary buttonStyle={{ minHeight: 40, borderRadius: 50 }} leftIcon={'share-variant'} leftIconColor="white" textStyle={{ lineHeight: 20 }} label="Share" />
+						<ButtonPrimary onPress={shareCollectionToggleModal} buttonStyle={{ minHeight: 40, borderRadius: 50 }} leftIcon={'share-variant'} leftIconColor="white" textStyle={{ lineHeight: 20 }} label="Share" />
 					</View>
 
 					<TabView
@@ -157,26 +158,9 @@ export default function CollectionDetailScreen() {
 						)}
 					/>
 				</View>
-
-				<BottomModal isVisible={isModalVisible} onBackdropPress={toggleModal}>
-					<TouchableOpacity style={styles.button}>
-						<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="pencil" />
-						<Title style={styles.buttonTitle}>Rename</Title>
-					</TouchableOpacity>
-					<TouchableOpacity style={styles.button}>
-						<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="delete" />
-						<Title style={styles.buttonTitle}>Delete</Title>
-					</TouchableOpacity>
-					{/* <TouchableOpacity style={styles.button}>
-						<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="information" />
-						<Title style={styles.buttonTitle}>Get Details</Title>
-					</TouchableOpacity>
-					<TouchableOpacity style={styles.button}>
-						<Icon size={18} color={StyleConstants.COLOR_TEXT_LIGHT} name="share-variant" />
-						<Title style={styles.buttonTitle}>Share</Title>
-					</TouchableOpacity> */}
-				</BottomModal>
 			</ScrollView>
+			
+				<ShareCollectionModal isVisible={isShareCollectionVisible} onBackdropPress={shareCollectionToggleModal} />
 		</SafeAreaView>
 	)
 }
