@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { StyleSheet, ScrollView, View, TouchableOpacity, useWindowDimensions } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import BottomModal from '../../common/bottomModal'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CallectionCard from '../../components/collections/callectionCard'
 import Title from '../../components/Typography/Title'

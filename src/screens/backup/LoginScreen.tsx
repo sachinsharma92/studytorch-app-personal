@@ -3,7 +3,7 @@ import { StyleSheet, Text } from 'react-native'
 import { Button } from 'react-native-paper'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch } from 'react-redux';
-import { login } from '../redux/actions/userActions';
+import { login } from '../../redux/actions/userActions';
 
 
 interface LoginScreenProps {

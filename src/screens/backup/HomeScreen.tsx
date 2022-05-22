@@ -1,9 +1,9 @@
 import React from 'react'
 import { StyleSheet, Text } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import LogoPrimary from '../common/logoPrimary'
-import SubText from '../components/Typography/SubText'
-import Title from '../components/Typography/Title'
+import LogoPrimary from '../../common/logoPrimary'
+import SubText from '../../components/Typography/SubText'
+import Title from '../../components/Typography/Title'
 
 export default function HomeScreen() {
     return (

@@ -16,6 +16,7 @@ interface ShareCollectionProps {
   mainTitle?: string,
   inputlabel?: string,
   inputPlaceholder?: string,
+  buttonText?: string
 }
 
 const colorPalate = [
@@ -33,7 +34,7 @@ const colorPalate = [
   },
 ]
 
-export default function CreateModal({ isVisible, onBackdropPress, closeHandler, mainTitle, inputlabel, inputPlaceholder }: ShareCollectionProps) {
+export default function CreateModal({ isVisible, onBackdropPress, closeHandler, mainTitle, inputlabel, inputPlaceholder, buttonText="Save" }: ShareCollectionProps) {
 
   return (
     <>
@@ -59,7 +60,7 @@ export default function CreateModal({ isVisible, onBackdropPress, closeHandler, 
             </View>
           </View>
 
-          <ButtonPrimary buttonStyle={{ minHeight: 45, }} label="Save" />
+          <ButtonPrimary buttonStyle={{ minHeight: 45, }} label={buttonText} />
         </View>
       </Modal>
     </>

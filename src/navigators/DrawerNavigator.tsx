@@ -2,14 +2,14 @@ import React from 'react';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { StyleConstants } from '../styles/style-constants';
-import { DrawerActions, NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import BottomTabNavigator from './BottomTabNavigator';
 import CollectionsScreen from '../screens/collections';
 import SharedWithMeScreen from '../screens/sharedWithMe';
 import LogoPrimary from "../common/logoPrimary"
 import Title from '../components/Typography/Title';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logout } from '../redux/actions/userActions';
 import InputPrimary from '../common/inputPrimary';
 import PlannerScreen from '../screens/planner';
@@ -19,10 +19,16 @@ import QuizScreen from '../screens/quiz';
 import CollectionDetailScreen from '../screens/collections/details';
 import SharedDetailsScreen from '../screens/sharedWithMe/details';
 import GroupDetailScreen from '../screens/groups/details';
+import { ROUTES } from '../constants/routes';
+import ProfileScreen from '../screens/profiles';
 
 const Drawer = createDrawerNavigator();
 
-export default function DrawerNavigator(props: any) {
+interface DrawerNavigatorProps {
+  navigation: any
+}
+
+export default function DrawerNavigator({ navigation }: DrawerNavigatorProps) {
   return (
     <>
       <NavigationContainer>
@@ -44,7 +50,7 @@ export default function DrawerNavigator(props: any) {
               </View>
             ),
             headerRight: ({ }) => <View>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => { navigation.navigate(ROUTES.PROFILE_SCREEN) }}>
                 <Image
                   style={styles.tinyLogo}
                   source={{
@@ -142,6 +148,15 @@ export default function DrawerNavigator(props: any) {
             component={GroupDetailScreen}
             options={{
               drawerLabel: ({ }) => <Title style={styles.drawerLabelStyle}>Group Details</Title>,
+              drawerIcon: ({ }) => <Icon name="help-circle-outline" size={25} color={StyleConstants.COLOR_TEXT_LIGHT} />,
+            }}
+          />
+
+          <Drawer.Screen
+            name="Profile"
+            component={ProfileScreen}
+            options={{
+              drawerLabel: ({ }) => <Title style={styles.drawerLabelStyle}>Profile</Title>,
               drawerIcon: ({ }) => <Icon name="help-circle-outline" size={25} color={StyleConstants.COLOR_TEXT_LIGHT} />,
             }}
           />

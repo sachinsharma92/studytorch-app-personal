@@ -38,9 +38,9 @@ const infoCardList = [
 	},
 ]
 export default function CollectionsScreen() {
-	const [isCreateGroupModal, setCreateGroupModal] = useState(false);
-	const toggleCreateGroupModal = () => {
-		setCreateGroupModal(!isCreateGroupModal);
+	const [isCreateCollectionModal, setCreateCollectionModal] = useState(false);
+	const toggleCreateCollectionModal = () => {
+		setCreateCollectionModal(!isCreateCollectionModal);
 	};
 
 	return (
@@ -63,12 +63,13 @@ export default function CollectionsScreen() {
 				mainTitle="Create Collection"
 				inputPlaceholder='Ex. Maths'
 				inputlabel='Collection Name'
-				isVisible={isCreateGroupModal}
-				closeHandler={toggleCreateGroupModal}
-				onBackdropPress={toggleCreateGroupModal}
+				isVisible={isCreateCollectionModal}
+				closeHandler={toggleCreateCollectionModal}
+				onBackdropPress={toggleCreateCollectionModal}
+				buttonText="Created"
 			/>
 
-			<TouchableOpacity style={styles.buttonCreate} onPress={toggleCreateGroupModal}>
+			<TouchableOpacity style={styles.buttonCreate} onPress={toggleCreateCollectionModal}>
 				<Title style={styles.buttonCreateTitle}>+</Title>
 			</TouchableOpacity>
 		</SafeAreaView>

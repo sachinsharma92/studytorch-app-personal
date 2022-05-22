@@ -1,14 +1,12 @@
 import React from 'react'
-import { TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
 import { createBottomTabNavigator, BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { useSafeAreaFrame } from 'react-native-safe-area-context';
-import ProfileScreen from '../screens/ProfileScreen';
-import { NavigationContainer } from '@react-navigation/native';
+import ProfileScreen from '../screens/profiles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import HomeScreenStackNavigator from './HomeScreenStackNavigator';
 import { ROUTES } from '../constants/routes';
 import { TabBar } from './bottomAnimation/TabBar';
-import { DrawerActions } from '@react-navigation/native';
 import CollectionsScreen from '../screens/collections';
 import SharedWithMeScreen from '../screens/sharedWithMe';
 
