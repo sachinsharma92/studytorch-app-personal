@@ -8,21 +8,18 @@ import { StyleConstants } from '../../../styles/style-constants';
 
 
 interface HomeInfoCardProps {
-  imgUrl?: any,
+  icon?: any,
   subText?: string,
   title?: string
   cardStyle?: any
   imgStyle?: StyleProp<ViewStyle>,
 }
 
-export default function HomeInfoCard({ imgUrl, subText, title, cardStyle, imgStyle }: HomeInfoCardProps) {
+export default function HomeInfoCard({ icon, subText, title, cardStyle, imgStyle }: HomeInfoCardProps) {
   return (
     <View style={[styles.cardStyle, cardStyle]}>
       <View style={[styles.imgBox, imgStyle]}>
-        <Image
-          style={styles.imgStyle}
-          source={imgUrl}
-        />
+        {icon}
       </View>
       <View style={{ backgroundColor: 'white', marginTop: 10 }}>
         <Title style={styles.title1}>{title}</Title>
@@ -51,10 +48,10 @@ const styles = StyleSheet.create({
     lineHeight: 25
   },
   imgBox: {
-    height: 80,
-    width: 80,
-    backgroundColor:StyleConstants.COLOR_GRAY_EA,
-    borderRadius: 6
+    // height: 80,
+    // width: 80,
+    // backgroundColor:StyleConstants.COLOR_GRAY_EA,
+    // borderRadius: 6
   },
   imgStyle: {
     width: '100%',

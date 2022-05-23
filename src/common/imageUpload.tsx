@@ -12,7 +12,7 @@ const includeExtra = true;
 export default function ImageUpload() {
   const [response, setResponse] = React.useState<any>(null);
 
-  const [uploadOptionModalVisible, setuploadOptionModalVisible] = React.useState(true);
+  const [uploadOptionModalVisible, setuploadOptionModalVisible] = React.useState(false);
   const uploadOptionToggleModal = () => {
     setuploadOptionModalVisible(!uploadOptionModalVisible);
   };

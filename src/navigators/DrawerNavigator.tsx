@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { StyleConstants } from '../styles/style-constants';
@@ -21,6 +21,8 @@ import SharedDetailsScreen from '../screens/sharedWithMe/details';
 import GroupDetailScreen from '../screens/groups/details';
 import { ROUTES } from '../constants/routes';
 import ProfileScreen from '../screens/profiles';
+import SubText from '../components/Typography/SubText';
+import SearchWorkspaceModal from '../common/searchWorkspace';
 
 const Drawer = createDrawerNavigator();
 
@@ -29,6 +31,11 @@ interface DrawerNavigatorProps {
 }
 
 export default function DrawerNavigator({ navigation }: DrawerNavigatorProps) {
+  const [isSearchWorkspace, setSearchWorkspace] = useState(false);
+	const searchWorkspaceToggleModal = () => {
+		setSearchWorkspace(!isSearchWorkspace);
+	};
+
   return (
     <>
       <NavigationContainer>
@@ -45,9 +52,10 @@ export default function DrawerNavigator({ navigation }: DrawerNavigatorProps) {
             drawerInactiveTintColor: 'white',
             unmountOnBlur: true,
             headerTitle: () => (
-              <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 10 }}>
-                <InputPrimary style={styles.searchInput} placeholder="Search WorkSpace" inputStyle={styles.inputCustom} />
-              </View>
+              <TouchableOpacity onPress={searchWorkspaceToggleModal} activeOpacity={0.5} style={[ styles.searchInput, { flexDirection: 'row', paddingHorizontal: 20 }]}>
+                <SubText style={{lineHeight: 15,}}>Search WorkSpace</SubText>
+                {/* <InputPrimary style={styles.searchInput} placeholder="Search WorkSpace" inputStyle={styles.inputCustom} /> */}
+              </TouchableOpacity>
             ),
             headerRight: ({ }) => <View>
               <TouchableOpacity onPress={() => { navigation.navigate(ROUTES.PROFILE_SCREEN) }}>
@@ -156,11 +164,14 @@ export default function DrawerNavigator({ navigation }: DrawerNavigatorProps) {
             name="Profile"
             component={ProfileScreen}
             options={{
+              headerShown: false,
               drawerLabel: ({ }) => <Title style={styles.drawerLabelStyle}>Profile</Title>,
               drawerIcon: ({ }) => <Icon name="help-circle-outline" size={25} color={StyleConstants.COLOR_TEXT_LIGHT} />,
             }}
           />
         </Drawer.Navigator>
+
+        <SearchWorkspaceModal isVisible={isSearchWorkspace} onBackdropPress={searchWorkspaceToggleModal}/>
       </NavigationContainer>
     </>
   );
@@ -269,8 +280,14 @@ const styles = StyleSheet.create({
   },
   drawerHeaderStyle: {
     height: 70,
-    elevation: 0,
-    shadowOpacity: 0,
+    shadowColor: "#777",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 3,
   },
   tinyLogo: {
     width: 30,
@@ -279,8 +296,13 @@ const styles = StyleSheet.create({
     marginRight: 15
   },
   searchInput: {
-    width: '100%',
+    minWidth: '100%',
     marginLeft: 0,
+    borderWidth: 1,
+    borderColor: StyleConstants.COLOR_BORDER,
+    height: 40,
+    borderRadius: 50,
+    alignItems:'center',
   },
   inputCustom: {
     height: 35,

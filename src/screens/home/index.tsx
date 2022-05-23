@@ -7,31 +7,43 @@ import HomeInfoCard from '../../components/home/homeInfoCard'
 import SubText from '../../components/Typography/SubText'
 import Title from '../../components/Typography/Title'
 
+import IconHrs from "../../assets/images/dashboard/hrs.svg";
+import IconNotes from "../../assets/images/dashboard/notes.svg";
+import IconCollection from "../../assets/images/dashboard/collection.svg";
+import IconQuiz from "../../assets/images/dashboard/quiz.svg";
+import IconGroup from "../../assets/images/dashboard/group-studies.svg";
+
 
 const infoCardList = [
 	{
 		title: '80%',
-		subtext: '% Score'
+		subtext: '% Score',
+		icon: <IconHrs/>
 	},
 	{
 		title: '12.5 Hrs',
-		subtext: 'Hours Studies'
+		subtext: 'Hours Studies',
+		icon: <IconHrs/>
 	},
 	{
 		title: '45',
-		subtext: 'Notes'
+		subtext: 'Notes',
+		icon: <IconNotes/>
 	},
 	{
 		title: '20',
-		subtext: 'Study Groups'
+		subtext: 'Study Groups',
+		icon: <IconCollection/>
 	},
 	{
 		title: '2',
-		subtext: 'Active Quizes'
+		subtext: 'Active Quizes',
+		icon: <IconQuiz/>
 	},
 	{
 		title: '5',
-		subtext: 'Study Groups'
+		subtext: 'Study Groups',
+		icon: <IconGroup/>
 	}
 ]
 export default function HomeScreen() {
@@ -43,7 +55,7 @@ export default function HomeScreen() {
 
 					<View style={styles.cardSection}>
 						{infoCardList.map((item) => (
-							<HomeInfoCard title={item.title} subText={item.subtext} />
+							<HomeInfoCard title={item.title} subText={item.subtext} icon={item.icon} />
 						))}
 					</View>
 
@@ -81,7 +93,8 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 20, 
 		backgroundColor: 'white', 
 		flex: 1, 
-		paddingBottom: 100
+		paddingBottom: 100,
+		paddingTop: 20
 	},
 	cardSection: {
 		flexDirection: 'row',
@@ -93,5 +106,5 @@ const styles = StyleSheet.create({
 	},
 	barChart: {
 
-	}
+	},
 })

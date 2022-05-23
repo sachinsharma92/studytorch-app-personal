@@ -35,7 +35,7 @@ export default function PiechartView() {
           <View style={{ width: '100%', flexDirection:'row', justifyContent:'space-between'}}>
           {chartData.map((item) => (
             <View style={{ marginVertical: 10, marginRight: 10 }}>
-              <View style={{ flexDirection: 'row' }}>
+              <View style={{ flexDirection: 'row', alignItems:'center' }}>
                 <View style={[styles.colorDot, { backgroundColor: item.bgColor }]} />
                 <Title level={3}>{item.number} </Title>
               </View>
@@ -44,7 +44,7 @@ export default function PiechartView() {
           ))}
           </View>
         </View>
-        <View style={{ padding: 30 }}>
+        <View style={{ padding: 30, alignItems:'center', justifyContent:'center' }}>
           <PieChart
             widthAndHeight={widthAndHeight}
             series={series}
@@ -52,7 +52,7 @@ export default function PiechartView() {
             doughnut={true}
             coverRadius={0.65}
           />
-          <></>
+					<Title style={styles.scoreValue} level={2}>40%</Title>
         </View>
 
       </View>
@@ -84,5 +84,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
     overflow: 'hidden',
     marginRight: 8
-  }
+  },
+  scoreValue: {
+		position:'absolute',
+		top: 105,
+	}
 });
